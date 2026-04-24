@@ -15,9 +15,11 @@ function navActive($filename) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle ?? 'CineView') ?></title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
     <script defer src="js/app.js"></script>
 </head>
-<body>
+<body class="darkTheme">
 <header class="site-header">
     <div class="container header-inner">
         <a class="brand" href="index.php">CineView</a>

@@ -1,9 +1,9 @@
 <?php
 // Database connection configuration
-$host = '127.0.0.1';
-$db   = 'cinema_db';
-$user = 'root';
-$pass = 'Oniks05121976lk';
+$host = getenv('DB_HOST');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

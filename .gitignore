@@ -1,3 +1,6 @@
 .env
 /ProjectWork.code-workspace
 /sql
+composer.lock
+vendor/
+composer.json

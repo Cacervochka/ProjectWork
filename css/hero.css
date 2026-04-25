@@ -52,7 +52,7 @@
 .profile-card,
 .login-form,
 .menu-category {
-    background: var(--container-background-dark);
+    background: var(--container-background-1);
     border: 1px solid var(--container-border);
     border-radius: 18px;
     padding: 24px;
@@ -66,12 +66,12 @@
 .schedule-table th,
 .schedule-table td {
     padding: 14px 12px;
-    border: 1px solid var(--container-background-light);
+    border: 1px solid var(--container-background-3);
     text-align: left;
 }
 
 .schedule-table th {
-    background: var(--container-background-lighter);
+    background: var(--container-background-4);
 }
 
 .menu-list {
@@ -110,7 +110,7 @@ label {
 input[type='email'],
 input[type='password'] {
     padding: 12px 14px;
-    background: var(--container-dark-darker);
+    background: var(--container-background-2);
     border: 1px solid var(--container-border);
     border-radius: 12px;
     color: var(--body-color);
@@ -144,8 +144,8 @@ button:hover {
 footer.site-footer {
     padding: 24px 0;
     text-align: center;
-    background: var(--container-dark-darker);
-    border-top: 1px solid var(--container-background-light);
+    background: var(--container-background-2);
+    border-top: 1px solid var(--container-background-3);
 }
 
 @media (max-width: 768px) {

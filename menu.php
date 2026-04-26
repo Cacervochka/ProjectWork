@@ -24,7 +24,7 @@ foreach ($menuItems as $item) {
 
     <?php if ($menuByCategory): ?>
         <?php foreach ($menuByCategory as $category => $items): ?>
-            <div class="menu-category">
+            <div class="menu-category" id="<?= htmlspecialchars(strtolower(str_replace(' ', '-', $category))) ?>">
                 <h2><?= htmlspecialchars($category) ?></h2>
                 <ul class="menu-list">
                     <?php foreach ($items as $item): ?>

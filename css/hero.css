@@ -173,9 +173,36 @@ footer.site-footer {
         height: auto;
     }
 
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
     .site-nav a {
         height: auto;
         padding: 8px 10px;
+    }
+
+    .nav-dropdown {
+        position: static;
+        display: none;
+        min-width: 0;
+        margin-top: 4px;
+        padding: 6px;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown:focus-within .nav-dropdown {
+        display: block;
+    }
+
+    .nav-dropdown a {
+        padding-left: 22px;
     }
 
     .header-search {

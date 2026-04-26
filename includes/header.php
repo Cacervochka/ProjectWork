@@ -28,7 +28,15 @@ function navActive($filename) {
                 <a class="<?= navActive('index.php') ?>" href="index.php">Home</a>
                 <a class="<?= navActive('programs.php') ?>" href="programs.php">Programs</a>
                 <a class="<?= navActive('current.php') ?>" href="current.php">Current</a>
-                <a class="<?= navActive('menu.php') ?>" href="menu.php">Menu</a>
+                <div class="nav-item nav-item-dropdown">
+                    <a class="<?= navActive('menu.php') ?>" href="menu.php" aria-haspopup="true">Menu</a>
+                    <div class="nav-dropdown" aria-label="Menu categories">
+                        <a href="menu.php#snacks">Snacks</a>
+                        <a href="menu.php#drinks">Drinks</a>
+                        <a href="menu.php#combo-deals">Combo Deals</a>
+                        <a href="menu.php#desserts">Desserts</a>
+                    </div>
+                </div>
                 <a class="<?= navActive('info.php') ?>" href="info.php">Info</a>
                 <a class="<?= navActive('profile.php') ?>" href="profile.php">Profile</a>
             </nav>

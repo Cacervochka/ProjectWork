@@ -172,3 +172,23 @@
 .colorTheme svg path,.colorTheme svg rect {
     fill: var(--body-color-dark);
 }
+
+/* Fonts */
+.story-script-regular {
+  font-family: "Story Script", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  font-style: normal;
+}
+
+.fjalla-one-regular {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

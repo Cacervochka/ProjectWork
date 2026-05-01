@@ -22,7 +22,7 @@ function navActive($filename) {
     <link rel="stylesheet" href="css/hero.css">
     <script defer src="js/app.js"></script>
 </head>
-<body class="darkTheme">
+<body class="darkTheme <?= htmlspecialchars($bodyClass ?? '') ?>">
 <header class="site-header">
     <div class="container header-inner">
         <a class="brand fjalla-one-regular" href="index.php">CineView</a>
@@ -59,4 +59,4 @@ function navActive($filename) {
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
     </div>
 </header>
-<main class="container">
+<main class="<?= htmlspecialchars($mainClass ?? 'container') ?>">

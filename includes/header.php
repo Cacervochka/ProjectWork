@@ -21,13 +21,14 @@ function navActive($filename) {
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
     <script defer src="js/app.js"></script>
+    <script defer src="js/colorTheme.js"></script>
 </head>
 <body class="darkTheme <?= htmlspecialchars($bodyClass ?? '') ?>">
 <header class="site-header">
     <div class="container header-inner">
         <a class="brand fjalla-one-regular" href="index.php">CineView</a>
         <div class="header-actions">
-            <nav class="site-nav bebas-neue-regular" id="siteNav">
+            <nav class="site-nav fjalla-one-regular" id="siteNav">
                 <a class="<?= navActive('index.php') ?>" href="index.php">Home</a>
                 <a class="<?= navActive('programs.php') ?>" href="programs.php">Programs</a>
                 <a class="<?= navActive('current.php') ?>" href="current.php">Current</a>
@@ -55,8 +56,13 @@ function navActive($filename) {
                     <img src="ico/search-icon.png" alt="" aria-hidden="true">
                 </button>
             </form>
+            <button class="toggle-button" id="themeToggle" aria-label="Toggle dark/light theme">
+                <img class="toggleButton" src="ico/colorThemeSwitchWhite.svg" alt="" aria-hidden="true">
+            </button>
+            <button class="toggle-button" id="langToggle" aria-label="Toggle language">
+                <img class="toggleButton" src="ico/change-language.svg" alt="" aria-hidden="true">
+            </button>
         </div>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
     </div>
 </header>
 <main class="<?= htmlspecialchars($mainClass ?? 'container') ?>">

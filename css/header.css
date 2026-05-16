@@ -1,6 +1,6 @@
 .site-header {
-    background: #171313;
-    border-bottom: none;
+    background: var(--container-background-1);
+    border-bottom: 1px solid var(--container-border);
 }
 
 .header-inner {
@@ -60,14 +60,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    color: var(--header-text-color);
     text-decoration: none;
     padding: 0px 10px;
     height: 100%;
     width: 112px;
     margin-right: 5px;
-    font-weight: 800;
-    font-size: 0.86rem;
+    font-weight: 200;
+    font-size: 16px;
     text-transform: uppercase;
 }
 
@@ -78,8 +78,8 @@
     z-index: 20;
     min-width: 180px;
     padding: 8px;
-    background: #171313;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: var(--container-background-1);
+    border: 1px solid var(--container-border);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
     opacity: 0;
     visibility: hidden;
@@ -105,9 +105,8 @@
 
 .site-nav a:hover,
 .site-nav a.active {
-    color: var(--body-color);
-    background: rgba(255, 233, 40, 0.16);
-    
+    color: var(--header-text-color);
+    background: rgba(241, 196, 15, 0.75);
 }
 
 .header-search {
@@ -161,6 +160,33 @@
     object-fit: contain;
 }
 
+.toggle-button {
+    color: var(--body-color);
+    width: auto;
+    padding: 10px 18px;
+    border: none;
+    background: transparent;
+    border-radius: 0px;
+    flex-shrink: 0;
+    min-width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-height: 100%;
+}
+
+.toggle-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-toggle {
     display: none;
     background: transparent;
@@ -170,19 +196,19 @@
     cursor: pointer;
 }
 
-.colorTheme {
+.toggleButton {
     display: block;
     width: 30px;
     height: 30px;
     border-radius: 50px;
 }
 
-.colorTheme svg {
+.toggleButton svg {
     width: 30px;
     height: 30px;
 }
 
-.colorTheme svg path,.colorTheme svg rect {
+.toggleButton svg path,.toggleButton svg rect {
     fill: var(--body-color-dark);
 }
 

@@ -17,7 +17,7 @@ $upcomingStmt->execute();
 $upcomingShows = $upcomingStmt->fetchAll(PDO::FETCH_ASSOC);
 
 $dateTabs = [];
-$labels = ['DNES', 'ZAJTRA', 'NEDELA', 'PONDELOK', 'UTOROK', 'STREDA', 'STVRTOK'];
+$labels = ['FRIDAY', 'SATURDAY', 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'];
 for ($i = 0; $i < 7; $i++) {
     $date = new DateTimeImmutable("+$i day");
     $dateTabs[] = [
@@ -30,7 +30,7 @@ for ($i = 0; $i < 7; $i++) {
 <section class="home-hero" aria-label="Featured cinema event">
     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">&lsaquo;</button>
     <div class="home-hero-panel">
-        <h1>Kultura potrebuje priestor</h1>
+        <h1></h1>
         <p>Podporte verejnu zbierku, ktora pomoze zachranit fungovanie nezavislych kulturnych centier.</p>
         <a class="home-hero-button" href="programs.php">CHCEM PODPORIT -></a>
     </div>
@@ -72,5 +72,7 @@ for ($i = 0; $i < 7; $i++) {
         <?php endif; ?>
     </div>
 </section>
+
+<script type="text/javascript" src="js/colorTheme.js"></script>
 
 <?php include_once __DIR__ . '/includes/footer.php';

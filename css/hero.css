@@ -3,6 +3,30 @@
     padding: 100px 0;
     color: var(--body-color);
     text-align: center;
+    position: relative;
+}
+
+.hero-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.hero-button {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--body-color);
+    color: var(--body-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.hero-button:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .hero-content {
@@ -149,8 +173,8 @@ footer.site-footer {
 }
 
 .home-page {
-    background: #f6f6f4;
-    color: #15171f;
+    background: var(--body-background);
+    color: var(--body-color);
 }
 
 .home-main {
@@ -163,7 +187,7 @@ footer.site-footer {
     display: grid;
     grid-template-columns: minmax(320px, 32.5vw) 1fr;
     min-height: 448px;
-    background: #171313;
+    background: var(--hero-background);
 }
 
 .home-hero-panel {
@@ -171,8 +195,8 @@ footer.site-footer {
     flex-direction: column;
     justify-content: center;
     padding: 44px 42px;
-    background: #ffdf24;
-    color: #42120b;
+    background: var(--hero-panel-background);
+    color: var(--hero-panel-color);
 }
 
 .home-hero-panel h1 {
@@ -196,8 +220,8 @@ footer.site-footer {
     min-width: 200px;
     margin-top: 2px;
     padding: 9px 24px;
-    color: #171313;
-    border: 1px solid #171313;
+    color: var(--hero-panel-background);
+    border: 1px solid var(--hero-panel-background);
     border-radius: 999px;
     text-align: center;
     text-decoration: none;
@@ -223,7 +247,7 @@ footer.site-footer {
     background: transparent;
     border: none;
     border-radius: 0;
-    color: #ffffff;
+    color: var(--hero-arrow-color);
     font-size: 3rem;
     line-height: 1;
 }
@@ -238,8 +262,8 @@ footer.site-footer {
 
 .home-program {
     padding: 42px 40px 70px;
-    background: #f6f6f4;
-    color: #15171f;
+    background: var(--body-background);
+    color: var(--body-color);
 }
 
 .home-date-tabs {
@@ -253,7 +277,7 @@ footer.site-footer {
 .home-date-tabs a {
     flex: 0 0 auto;
     padding: 14px 22px;
-    color: #15171f;
+    color: var(--body-color);
     border-radius: 999px;
     text-decoration: none;
     font-size: 0.94rem;
@@ -261,12 +285,12 @@ footer.site-footer {
 }
 
 .home-date-tabs a.active {
-    background: #171313;
-    color: #ffffff;
+    background: var(--accent-color-1);
+    color: var(--body-background);
 }
 
 .home-show-list {
-    border-top: 1px solid #2f3033;
+    border-top: 1px solid var(--container-border);
 }
 
 .home-show-row {
@@ -275,7 +299,7 @@ footer.site-footer {
     align-items: center;
     gap: 16px;
     min-height: 77px;
-    border-bottom: 1px solid #2f3033;
+    border-bottom: 1px solid var(--container-border);
 }
 
 .home-show-row h2 {
@@ -310,17 +334,17 @@ footer.site-footer {
     min-width: 28px;
     min-height: 28px;
     padding: 4px 7px;
-    border: 1px solid #b9bbc0;
+    border: 1px solid var(--container-border);
     border-radius: 999px;
-    color: #83868d;
+    color: var(--body-color-darker);
     font-size: 0.78rem;
     font-weight: 700;
 }
 
 .show-meta .room-badge {
     min-width: 76px;
-    border-color: #15171f;
-    color: #15171f;
+    border-color: var(--body-color);
+    color: var(--body-color);
 }
 
 .buy-button {
@@ -329,8 +353,8 @@ footer.site-footer {
     justify-content: center;
     min-height: 42px;
     padding: 10px 22px;
-    color: #171313;
-    background: #ffea28;
+    color: var(--body-background);
+    background: var(--accent-color-2);
     border-radius: 999px;
     text-decoration: none;
     font-size: 0.88rem;
@@ -339,13 +363,13 @@ footer.site-footer {
 
 .empty-program {
     padding: 28px 0;
-    color: #53565d;
+    color: var(--body-color-darker);
 }
 
 .home-page footer.site-footer {
-    background: #f6f6f4;
-    color: #15171f;
-    border-top: 1px solid #d7d7d1;
+    background: var(--body-background);
+    color: var(--body-color);
+    border-top: 1px solid var(--container-border);
 }
 
 @media (max-width: 768px) {

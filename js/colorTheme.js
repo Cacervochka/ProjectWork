@@ -14,6 +14,35 @@ function setCookie(name, value, days = 30) {
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 }
 
+// Helper: toggle theme
+function toggleTheme() {
+    let currentTheme = getCookie("colorTheme") || "darkTheme";
+    let newTheme = currentTheme === "darkTheme" ? "lightTheme" : "darkTheme";
+    
+    setCookie("colorTheme", newTheme);
+    applyTheme(newTheme);
+    updateThemeIcon(newTheme);
+}
+
+// Helper: apply theme to body
+function applyTheme(theme) {
+    if (theme === "lightTheme") {
+        document.body.classList.add("lightTheme");
+        document.body.classList.remove("darkTheme");
+    } else {
+        document.body.classList.add("darkTheme");
+        document.body.classList.remove("lightTheme");
+    }
+}
+
+// Helper: update theme icon
+function updateThemeIcon(theme) {
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = theme === "darkTheme" ? "🌙" : "☀️";
+    }
+}
+
 // Main logic
 function handleUserCookie() {
     let colorTheme = getCookie("colorTheme");
@@ -24,23 +53,18 @@ function handleUserCookie() {
         setCookie("colorTheme", colorTheme);
     }
 
-    // Do different things based on value
-    switch (colorTheme) {
-        case "darkTheme":
-            document.body.classList.add("darkTheme")
-            document.body.classList.remove("lightTheme")
-            break;
-
-        case "lightTheme":
-            document.body.classList.add("lightTheme")
-            document.body.classList.remove("darkTheme")
-            break;
-
-        default:
-            document.body.classList.add("darkTheme")
-            document.body.classList.remove("lightTheme")
-    }
+    // Apply theme
+    applyTheme(colorTheme);
+    updateThemeIcon(colorTheme);
 }
+
+// Event listener for theme toggle button
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+});
 
 // Run it
 handleUserCookie();

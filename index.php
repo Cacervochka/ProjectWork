@@ -32,8 +32,8 @@ for ($i = 0; $i < 7; $i++) {
     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">&lsaquo;</button>
     <div class="home-hero-panel">
         <h1>Welcome to Grace</h1>
-        <p>Experience the latest blockbusters, café favorites, and a seamless movie night.</p>
-        <a class="home-hero-button" href="programs.php">See Programs -></a>
+        <p>Podporte verejnu zbierku, ktora pomoze zachranit fungovanie nezavislych kulturnych centier.</p>
+        <a class="home-hero-button" href="programs.php">CHCEM PODPORIT -></a>
 
     </div>
     <div class="home-hero-image"></div>

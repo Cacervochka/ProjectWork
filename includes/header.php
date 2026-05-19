@@ -23,6 +23,7 @@ function navActive($filename)
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/aboutUs.css">
     <script defer src="js/app.js"></script>
     <script defer src="js/colorTheme.js"></script>
 
@@ -59,17 +60,16 @@ function navActive($filename)
                         aria-label="Search movies"
                         value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
                     <button class="search-button" type="submit" aria-label="Search">
-                        <img src="ico/search-icon.png" alt="" aria-hidden="true">
-                    </button>
-                </form>
-                <<<<<<< Updated upstream
-                    <button class="toggle-button" id="themeToggle" aria-label="Toggle dark/light theme">
-                    <img class="toggleButton" src="ico/colorThemeSwitchWhite.svg" alt="" aria-hidden="true">
-                    </button>
-                    <button class="toggle-button" id="langToggle" aria-label="Toggle language">
-                        <img class="toggleButton" src="ico/change-language.svg" alt="" aria-hidden="true">
-                    </button>
-                    =======
+                    <img src="ico/search-icon.png" alt="" aria-hidden="true">
+                </button>
+            </form>
+            <button class="toggle-button" id="themeToggle" aria-label="Toggle dark/light theme">
+                <img class="toggleButton" src="ico/colorThemeSwitchWhite.svg" alt="" aria-hidden="true">
+            </button>
+            <button class="toggle-button" id="langToggle" aria-label="Toggle language">
+                <img class="toggleButton" src="ico/change-language.svg" alt="" aria-hidden="true">
+            </button>
+
                     <span class="colorTheme"><svg viewBox="0 0 511.44 511.44">
                             <path id="path_1" data-name="path 1" d="M255.72,97.72a158,158,0,0,0-158,158c0,87.12,70.88,158,158,158a158.19,158.19,0,0,0,140.73-86.2,157.48,157.48,0,0,0,17.27-71.8C413.72,168.6,342.84,97.72,255.72,97.72Zm0,300c-78.3,0-142-63.7-142-142A141.92,141.92,0,0,1,173.79,139.8a157.29,157.29,0,0,0-7.14,47c0,87.12,70.88,158,158,158a157.29,157.29,0,0,0,47-7.14A141.92,141.92,0,0,1,255.72,397.72Z" />
                             <rect id="path5" x="248.87" y="436.89" width="17.57" height="74.55" rx="8.79" transform="translate(519.51 946.04) rotate(179.49)" />
@@ -81,7 +81,7 @@ function navActive($filename)
                             <rect id="path11" x="465.38" y="216.51" width="17.57" height="74.55" rx="8.79" transform="translate(723.74 -222.61) rotate(89.49)" />
                             <rect id="path12" x="402.77" y="371.54" width="17.57" height="74.55" rx="8.79" transform="translate(991.61 401.74) rotate(134.49)" />
                         </svg></span>
-                    >>>>>>> Stashed changes
+
             </div>
         </div>
     </header>

@@ -6,8 +6,8 @@
 
 <div class="profileSubSection settingsSection">
     <h3>Settings</h3>
-    <p>Email : <span>useremailwhatever</span></p>
-    <p>Name : <span>user name</span></p>
+    <p>Email : <span><?= htmlspecialchars($user['email']) ?></span></p>
+    <p>Name : <span><?= htmlspecialchars($user['name']) ?></span></p>
     <span>* We recommend using real name for smoother person identification, in case your email address becomes unavailable for any reason</span>
     <a href="profile.php?logout=1" class="button">Log Out</a>
 </div>

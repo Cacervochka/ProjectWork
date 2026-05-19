@@ -4,9 +4,10 @@ $bodyClass = 'home-page';
 $mainClass = 'home-main';
 include_once __DIR__ . '/includes/header.php';
 include_once __DIR__ . '/includes/db.php';
+include_once __DIR__ . '/includes/schedule_helpers.php';
 
 $upcomingStmt = $pdo->prepare(
-    'SELECT s.id AS schedule_id, m.title, m.genre, m.duration, m.rating, s.show_time, s.room, s.price
+    'SELECT s.id AS schedule_id, m.id AS movie_id, m.title, m.genre, m.duration, m.rating, s.show_time, s.room, s.price
      FROM schedules s
      JOIN movies m ON s.movie_id = m.id
      WHERE s.show_time >= NOW()
@@ -16,23 +17,15 @@ $upcomingStmt = $pdo->prepare(
 $upcomingStmt->execute();
 $upcomingShows = $upcomingStmt->fetchAll(PDO::FETCH_ASSOC);
 
-$dateTabs = [];
-$labels = ['FRIDAY', 'SATURDAY', 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY'];
-for ($i = 0; $i < 7; $i++) {
-    $date = new DateTimeImmutable("+$i day");
-    $dateTabs[] = [
-        'label' => $labels[$i],
-        'date' => $date->format('d. m.'),
-    ];
-}
+$dateTabs = fetchScheduleDateTabs($pdo);
 ?>
 
 <section class="home-hero" aria-label="Featured cinema event">
     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">&lsaquo;</button>
     <div class="home-hero-panel">
-        <h1></h1>
-        <p>Podporte verejnu zbierku, ktora pomoze zachranit fungovanie nezavislych kulturnych centier.</p>
-        <a class="home-hero-button" href="programs.php">CHCEM PODPORIT -></a>
+        <h1 data-i18n="home.hero.title">Culture needs space</h1>
+        <p data-i18n="home.hero.text">Support the public collection that helps keep independent cultural cinema alive.</p>
+        <a class="home-hero-button" href="programs.php" data-i18n="home.hero.button">SEE PROGRAM -></a>
     </div>
     <div class="home-hero-image"></div>
     <button class="hero-arrow hero-arrow-right" type="button" aria-label="Next slide">&rsaquo;</button>
@@ -41,8 +34,8 @@ for ($i = 0; $i < 7; $i++) {
 <section class="home-program">
     <div class="home-date-tabs" aria-label="Program days">
         <?php foreach ($dateTabs as $index => $tab): ?>
-            <a class="<?= $index === 0 ? 'active' : '' ?>" href="programs.php">
-                <?= htmlspecialchars($tab['label']) ?> <?= htmlspecialchars($tab['date']) ?>
+            <a class="<?= $index === 0 ? 'active' : '' ?>" href="programs.php?date=<?= htmlspecialchars($tab['date']) ?>">
+                <span data-i18n="<?= htmlspecialchars($tab['key']) ?>"><?= htmlspecialchars($tab['label']) ?></span> <?= htmlspecialchars($tab['display']) ?>
             </a>
         <?php endforeach; ?>
     </div>
@@ -57,18 +50,18 @@ for ($i = 0; $i < 7; $i++) {
                     <time class="show-time" datetime="<?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>">
                         <?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>
                     </time>
-                    <h2><?= htmlspecialchars($show['title']) ?></h2>
+                    <h2><a href="movie.php?id=<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></a></h2>
                     <div class="show-meta">
                         <span class="room-badge"><?= htmlspecialchars($show['room']) ?></span>
                         <span>2D</span>
                         <span><?= htmlspecialchars(strtoupper(substr($show['genre'], 0, 2))) ?></span>
                         <span><?= htmlspecialchars($show['rating']) ?></span>
                     </div>
-                    <a class="buy-button" href="programs.php">KUPIT</a>
+                    <a class="buy-button" href="programs.php" data-i18n="button.buy">BUY</a>
                 </article>
             <?php endforeach; ?>
         <?php else: ?>
-            <p class="empty-program">No upcoming screenings available right now. Check back soon.</p>
+            <p class="empty-program" data-i18n="empty.upcoming">No upcoming screenings available right now. Check back soon.</p>
         <?php endif; ?>
     </div>
 </section>

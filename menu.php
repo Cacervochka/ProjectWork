@@ -19,8 +19,8 @@ foreach ($menuItems as $item) {
 ?>
 
 <section class="section">
-    <h1>Bar & Cafeteria Menu</h1>
-    <p>Enjoy snacks, drinks, and specials designed for your movie experience.</p>
+    <h1 data-i18n="menu.page.title">Bar & Cafeteria Menu</h1>
+    <p data-i18n="menu.page.text">Enjoy snacks, drinks, and specials designed for your movie experience.</p>
 
     <?php if ($menuByCategory): ?>
         <?php foreach ($menuByCategory as $category => $items): ?>
@@ -38,7 +38,7 @@ foreach ($menuItems as $item) {
             </div>
         <?php endforeach; ?>
     <?php else: ?>
-        <p>The menu is being updated. Please check again later.</p>
+        <p data-i18n="menu.page.empty">The menu is being updated. Please check again later.</p>
     <?php endif; ?>
 </section>
 

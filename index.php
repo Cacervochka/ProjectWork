@@ -20,12 +20,20 @@ $upcomingShows = $upcomingStmt->fetchAll(PDO::FETCH_ASSOC);
 $dateTabs = fetchScheduleDateTabs($pdo);
 ?>
 
+
 <section class="home-hero" aria-label="Featured cinema event">
     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">&lsaquo;</button>
     <div class="home-hero-panel">
+<<<<<<< HEAD
         <h1 data-i18n="home.hero.title">Culture needs space</h1>
         <p data-i18n="home.hero.text">Support the public collection that helps keep independent cultural cinema alive.</p>
         <a class="home-hero-button" href="programs.php" data-i18n="home.hero.button">SEE PROGRAM -></a>
+=======
+        <h1>Welcome to Grace</h1>
+        <p>Podporte verejnu zbierku, ktora pomoze zachranit fungovanie nezavislych kulturnych centier.</p>
+        <a class="home-hero-button" href="programs.php">CHCEM PODPORIT -></a>
+
+>>>>>>> origin/main
     </div>
     <div class="home-hero-image"></div>
     <button class="hero-arrow hero-arrow-right" type="button" aria-label="Next slide">&rsaquo;</button>

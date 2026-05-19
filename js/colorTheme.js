@@ -68,3 +68,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Run it
 handleUserCookie();
+
+let themeSwitch = document.getElementsByClassName("colorTheme")[0];
+
+themeSwitch.onclick = function() {
+    let colorTheme = getCookie("colorTheme");
+
+    // Do different things based on value
+    switch (colorTheme) {
+        case "lightTheme": 
+            document.body.classList.add("darkTheme")
+            document.body.classList.remove("lightTheme")
+            setCookie("colorTheme", "darkTheme");
+            break;
+
+        case "darkTheme":
+            document.body.classList.add("lightTheme")
+            document.body.classList.remove("darkTheme")
+            setCookie("colorTheme", "lightTheme");
+            break;
+    }
+}

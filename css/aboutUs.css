@@ -1,0 +1,61 @@
+.aboutUsSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+}
+
+.sectionContent {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+.infoCardContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.infoCard {
+    background-color: var(--container-background-3);
+    width: 25%;
+    border-radius: 7px;
+}
+
+.infoCard h3 {
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 1.8;
+    background-color: var(--accent-color-1);
+    color: var(--body-background);
+    border-radius: 23px;
+    border-top-left-radius: 0;
+    width: fit-content;
+}
+
+.infoCard p {
+    padding-left: 10px;
+    color: var(--body-color-darker);
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 0.7;
+    padding-bottom: 15px;
+}
+
+.infoCard p:nth-child(even) {
+    font-weight: bold;
+    color: var(--body-color);
+    font-size: 1.2rem;
+    line-height: 0.7;
+    padding-bottom: 0;
+}
+
+.infoText {
+    padding-left: 50px;
+}

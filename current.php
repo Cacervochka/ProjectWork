@@ -18,6 +18,7 @@ $currentStmt->execute();
 $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<<<<<<< HEAD
 <section class="page-hero movies-hero">
     <div class="page-hero-panel">
         <span class="eyebrow" data-i18n="current.eyebrow">Now showing</span>
@@ -26,6 +27,11 @@ $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="page-hero-image"></div>
 </section>
+=======
+<section class="section">
+    <h1>Currently Showing</h1>
+    <p>See what’s playing now at Grace.</p>
+>>>>>>> origin/main
 
 <section class="program-shell movie-grid-shell">
     <?php if ($currentMovies): ?>

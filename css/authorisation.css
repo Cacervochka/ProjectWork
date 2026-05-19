@@ -1,0 +1,99 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.authForm {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    background-color: var(--container-background-1);
+    border: 1px solid var(--container-border);
+    border-radius: 5px;
+    height: 60vh;
+    width: 30vw;
+}
+
+.authForm * {
+    margin-left: 15px;
+}
+
+.authForm label, .authForm input {
+    display: block;
+}
+
+.authForm label {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+}
+
+.authForm form {
+    width: 90%;
+}
+
+.authForm form * {
+    margin-left: 0;
+}
+
+.authForm div {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.authForm input {
+    height: 5vh;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.authForm button {
+    background-color: var(--accent-color-1);
+    color: var(--body-color);
+    border: none;
+    width: 50%;
+    height: 15%;
+    border-radius: 150px;
+    font-size: 1.1rem;
+}
+
+a, a:visited {
+    color: var(--accent-color-2);
+}
+
+.longForm {
+    height: 70vh;
+}
+
+.longForm input{
+    height: 4vh;
+}
+
+.longForm label {
+    font-size: 1.1rem;
+}
+
+.longForm button {
+    height: 12%;
+}
+
+.longForm form {
+    margin-top: -25px;
+}
+
+.colorTheme svg {
+    width: 30px;
+    height: 30px;
+}
+
+.colorTheme svg path,.colorTheme svg rect {
+    fill: var(--body-color-dark);
+}

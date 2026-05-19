@@ -15,7 +15,7 @@ $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
 
 <section class="section">
     <h1>Currently Showing</h1>
-    <p>See what’s playing now at CineView.</p>
+    <p>See what’s playing now at Grace.</p>
 
     <?php if ($currentMovies): ?>
         <div class="card-grid">

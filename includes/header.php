@@ -25,7 +25,7 @@ function navActive($filename)
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/aboutUs.css">
     <link rel="stylesheet" href="css/menu.css">
-
+    <link rel="stylesheet" href="css/ticket.css">
     <script defer src="js/app.js"></script>
     <script defer src="js/colorTheme.js"></script>
 

@@ -1,18 +1,31 @@
 <div class="authForm longForm">
-    <h2>Member Registartion</h2>
+    <div class="auth-heading">
+        <p data-i18n="auth.register.eyebrow">Create your account</p>
+        <h1 data-i18n="auth.register.title">Member Registration</h1>
+    </div>
 
     <form method="post" action="profile.php">
-        <label for="email">Full name</label>
-        <input type="text" id="name" name="name" required>
+        <div class="auth-field">
+            <label for="name" data-i18n="auth.name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <div class="auth-field">
+            <label for="email" data-i18n="auth.email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <div class="auth-field">
+            <label for="password" data-i18n="auth.password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" required>
+        </div>
 
-        <button type="submit" name="register">Register</button>
+        <button type="submit" name="register" data-i18n="auth.register.button">Register</button>
     </form>
-    <div><p class="note">Already have an account? <a href="authorisation.php?action=1">Log in</a></p><span class="colorTheme"><svg viewBox="0 0 511.44 511.44"><path id="path_1" data-name="path 1" d="M255.72,97.72a158,158,0,0,0-158,158c0,87.12,70.88,158,158,158a158.19,158.19,0,0,0,140.73-86.2,157.48,157.48,0,0,0,17.27-71.8C413.72,168.6,342.84,97.72,255.72,97.72Zm0,300c-78.3,0-142-63.7-142-142A141.92,141.92,0,0,1,173.79,139.8a157.29,157.29,0,0,0-7.14,47c0,87.12,70.88,158,158,158a157.29,157.29,0,0,0,47-7.14A141.92,141.92,0,0,1,255.72,397.72Z"/><rect id="path5" x="248.87" y="436.89" width="17.57" height="74.55" rx="8.79" transform="translate(519.51 946.04) rotate(179.49)"/><rect id="path6" x="93.84" y="374.28" width="17.57" height="74.55" rx="8.79" transform="translate(-112.59 777.06) rotate(-135.51)"/><rect id="path7" x="28.49" y="220.38" width="17.57" height="74.55" rx="8.79" transform="translate(-220.04 297.22) rotate(-90.51)"/><rect id="path8" x="91.1" y="65.35" width="17.57" height="74.55" rx="8.79" transform="matrix(0.7, -0.71, 0.71, 0.7, -43.32, 101.96)"/><rect id="path9" x="245" width="17.57" height="74.55" rx="8.79" transform="translate(-0.32 2.25) rotate(-0.51)"/><rect id="path10" x="400.03" y="62.61" width="17.57" height="74.55" rx="8.79" transform="translate(187.19 -257.87) rotate(44.49)"/><rect id="path11" x="465.38" y="216.51" width="17.57" height="74.55" rx="8.79" transform="translate(723.74 -222.61) rotate(89.49)"/><rect id="path12" x="402.77" y="371.54" width="17.57" height="74.55" rx="8.79" transform="translate(991.61 401.74) rotate(134.49)"/></svg></span></div>
+
+    <div class="auth-footer">
+        <p class="note"><span data-i18n="auth.register.have">Already have an account?</span> <a href="authorisation.php?action=1" data-i18n="auth.register.login">Log in</a></p>
+        <span class="colorTheme" role="button" tabindex="0" aria-label="Toggle color theme" data-i18n-aria="theme.toggle"><svg viewBox="0 0 511.44 511.44"><path id="path_1" data-name="path 1" d="M255.72,97.72a158,158,0,0,0-158,158c0,87.12,70.88,158,158,158a158.19,158.19,0,0,0,140.73-86.2,157.48,157.48,0,0,0,17.27-71.8C413.72,168.6,342.84,97.72,255.72,97.72Zm0,300c-78.3,0-142-63.7-142-142A141.92,141.92,0,0,1,173.79,139.8a157.29,157.29,0,0,0-7.14,47c0,87.12,70.88,158,158,158a157.29,157.29,0,0,0,47-7.14A141.92,141.92,0,0,1,255.72,397.72Z"/><rect id="path5" x="248.87" y="436.89" width="17.57" height="74.55" rx="8.79" transform="translate(519.51 946.04) rotate(179.49)"/><rect id="path6" x="93.84" y="374.28" width="17.57" height="74.55" rx="8.79" transform="translate(-112.59 777.06) rotate(-135.51)"/><rect id="path7" x="28.49" y="220.38" width="17.57" height="74.55" rx="8.79" transform="translate(-220.04 297.22) rotate(-90.51)"/><rect id="path8" x="91.1" y="65.35" width="17.57" height="74.55" rx="8.79" transform="matrix(0.7, -0.71, 0.71, 0.7, -43.32, 101.96)"/><rect id="path9" x="245" width="17.57" height="74.55" rx="8.79" transform="translate(-0.32 2.25) rotate(-0.51)"/><rect id="path10" x="400.03" y="62.61" width="17.57" height="74.55" rx="8.79" transform="translate(187.19 -257.87) rotate(44.49)"/><rect id="path11" x="465.38" y="216.51" width="17.57" height="74.55" rx="8.79" transform="translate(723.74 -222.61) rotate(89.49)"/><rect id="path12" x="402.77" y="371.54" width="17.57" height="74.55" rx="8.79" transform="translate(991.61 401.74) rotate(134.49)"/></svg></span>
+    </div>
     
 </div>

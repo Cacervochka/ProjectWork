@@ -203,6 +203,13 @@
     border-radius: 50px;
 }
 
+.lang-code {
+    margin-left: 6px;
+    color: var(--header-text-color);
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
 .toggleButton svg {
     width: 30px;
     height: 30px;

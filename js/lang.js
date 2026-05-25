@@ -1,0 +1,368 @@
+const translations = {
+    en: {
+        'nav.home': 'Home',
+        'nav.programs': 'Programs',
+        'nav.current': 'Current',
+        'nav.menu': 'Menu',
+        'nav.info': 'Info',
+        'nav.profile': 'Profile',
+        'nav.admin': 'Admin',
+        'menu.snacks': 'Snacks',
+        'menu.drinks': 'Drinks',
+        'menu.combo': 'Combo Deals',
+        'menu.desserts': 'Desserts',
+        'search.placeholder': 'Search movies...',
+        'search.aria': 'Search movies',
+        'search.button': 'Search',
+        'theme.toggle': 'Toggle dark/light theme',
+        'language.toggle': 'Toggle language',
+        'home.hero.title': 'Culture needs space',
+        'home.hero.text': 'Support the public collection that helps keep independent cultural cinema alive.',
+        'home.hero.button': 'SEE PROGRAM ->',
+        'program.eyebrow': 'Program',
+        'program.title': 'Show schedule',
+        'program.text': 'Choose a day, movie, and showtime. All screenings are imported from the database.',
+        'program.search': 'Search movie or genre',
+        'current.eyebrow': 'Now showing',
+        'current.title': 'Movies in cinema now',
+        'current.text': 'Browse current movies with quick access to details and available showtimes.',
+        'movie.notFound.title': 'Movie not found',
+        'movie.notFound.text': 'The selected movie does not exist or was removed from the program.',
+        'movie.notFound.back': 'BACK TO PROGRAM',
+        'movie.title.1': 'Midnight Chase',
+        'movie.title.2': 'Starlight Melody',
+        'movie.title.3': 'Quantum Rift',
+        'movie.title.4': 'Inception',
+        'movie.title.5': 'Interstellar',
+        'movie.title.6': 'The Dark Knight',
+        'movie.title.7': 'Inception',
+        'movie.title.8': 'Interstellar',
+        'movie.title.9': 'The Dark Knight',
+        'movie.sessions.eyebrow': 'Sessions',
+        'movie.sessions.title': 'Available showtimes',
+        'movie.sessions.full': 'FULL PROGRAM',
+        'movie.minutes': 'min',
+        'status.current': 'Current',
+        'status.upcoming': 'Upcoming',
+        'label.next': 'Next',
+        'button.buy': 'BUY',
+        'button.detail': 'DETAIL',
+        'button.search': 'SEARCH',
+        'date.all': 'ALL',
+        'date.today': 'TODAY',
+        'date.tomorrow': 'TOMORROW',
+        'date.monday': 'MONDAY',
+        'date.tuesday': 'TUESDAY',
+        'date.wednesday': 'WEDNESDAY',
+        'date.thursday': 'THURSDAY',
+        'date.friday': 'FRIDAY',
+        'date.saturday': 'SATURDAY',
+        'date.sunday': 'SUNDAY',
+        'empty.upcoming': 'No upcoming screenings available right now. Check back soon.',
+        'empty.selection': 'No screenings match your selection.',
+        'empty.current': 'No movies are currently marked as playing. Check back again soon.',
+        'empty.movieShows': 'No upcoming sessions for this movie right now.',
+        'empty.movieShowsShort': 'No upcoming show',
+        'menu.page.title': 'Bar & Cafeteria Menu',
+        'menu.page.text': 'Enjoy snacks, drinks, and specials designed for your movie experience.',
+        'menu.page.empty': 'The menu is being updated. Please check again later.',
+        'menu.category.snacks': 'Snacks',
+        'menu.category.drinks': 'Drinks',
+        'menu.category.combo-deals': 'Combo Deals',
+        'menu.category.desserts': 'Desserts',
+        'info.title': 'Information & Contacts',
+        'info.hours.title': 'Opening Hours',
+        'info.hours.weekdays': 'Monday - Thursday: 12:00 PM - 11:00 PM',
+        'info.hours.weekend': 'Friday - Sunday: 10:00 AM - 12:00 AM',
+        'info.address.title': 'Address',
+        'info.contact.title': 'Contact',
+        'info.contact.email': 'Email:',
+        'info.contact.phone': 'Phone:',
+        'info.about.title': 'About Grace',
+        'info.about.text1': 'Grace is a cinema space for current films, comfortable screenings, and easy access to schedules, tickets, and visitor information.',
+        'info.about.text2': 'Use the site to browse movies, check showtimes, explore the bar menu, and manage your profile in one place.',
+        'profile.title': 'Profile',
+        'profile.welcome': 'Welcome',
+        'profile.email': 'Email:',
+        'profile.name': 'Name:',
+        'profile.manage': 'You can manage your reservations and preferences from here.',
+        'profile.logout': 'Log Out',
+        'profile.guest.title': 'Guest View',
+        'profile.guest.text': 'You are currently viewing this website as a guest. Please log into an account to view profile information.',
+        'profile.nav.tickets': 'Tickets',
+        'profile.nav.reviews': 'Reviews',
+        'profile.nav.settings': 'Settings',
+        'profile.tickets.upcoming': 'Upcoming Events:',
+        'profile.tickets.past': 'Past Events:',
+        'profile.tickets.empty': 'No reserved tickets found.',
+        'profile.browse': 'Browse upcoming events',
+        'profile.seat': 'Seat',
+        'profile.ticket': 'Ticket',
+        'profile.filmDetails': 'Film details',
+        'profile.reviews.title': 'Your reviews:',
+        'profile.reviews.empty': 'No events visited',
+        'profile.review.add': 'Add review',
+        'profile.review.publish': 'Publish',
+        'profile.review.placeholder': 'Tell us about your experience',
+        'profile.review.yours': 'Your review',
+        'profile.settings.note': '* We recommend using real name for smoother person identification, in case your email address becomes unavailable for any reason',
+        'auth.login.eyebrow': 'Welcome back',
+        'auth.login.title': 'Member Login',
+        'auth.login.button': 'Log In',
+        'auth.login.new': 'New here?',
+        'auth.login.register': 'Register an account',
+        'auth.register.eyebrow': 'Create your account',
+        'auth.register.title': 'Member Registration',
+        'auth.register.button': 'Register',
+        'auth.register.have': 'Already have an account?',
+        'auth.register.login': 'Log in',
+        'auth.email': 'Email',
+        'auth.password': 'Password',
+        'auth.name': 'Full name',
+        'admin.eyebrow': 'Admin',
+        'admin.title': 'Cinema Management',
+        'admin.subtitle': 'Add and remove movies, showtimes, and menu items.',
+        'admin.denied.title': 'Access denied',
+        'admin.denied.text': 'Your account is not allowed to use the admin panel.',
+        'admin.movies.title': 'Movies',
+        'admin.schedules.title': 'Schedule',
+        'admin.menu.title': 'Menu Items',
+        'admin.movie.title': 'Title',
+        'admin.movie.genre': 'Genre',
+        'admin.movie.duration': 'Duration',
+        'admin.movie.rating': 'Rating',
+        'admin.movie.description': 'Description',
+        'admin.movie.current': 'Currently showing',
+        'admin.schedule.movie': 'Movie',
+        'admin.schedule.time': 'Show time',
+        'admin.schedule.room': 'Room',
+        'admin.schedule.price': 'Price',
+        'admin.menu.category': 'Category',
+        'admin.menu.name': 'Name',
+        'admin.menu.description': 'Description',
+        'admin.menu.price': 'Price',
+        'admin.addMovie': 'Add movie',
+        'admin.addSchedule': 'Add showtime',
+        'admin.addMenuItem': 'Add item',
+        'admin.delete': 'Delete',
+        'footer.rights': 'All rights reserved.',
+    },
+    uk: {
+        'nav.home': 'Головна',
+        'nav.programs': 'Розклад',
+        'nav.current': 'Зараз у кіно',
+        'nav.menu': 'Меню',
+        'nav.info': 'Інфо',
+        'nav.profile': 'Профіль',
+        'nav.admin': 'Адмін',
+        'menu.snacks': 'Снеки',
+        'menu.drinks': 'Напої',
+        'menu.combo': 'Комбо',
+        'menu.desserts': 'Десерти',
+        'search.placeholder': 'Пошук фільмів...',
+        'search.aria': 'Пошук фільмів',
+        'search.button': 'Пошук',
+        'theme.toggle': 'Перемкнути темну/світлу тему',
+        'language.toggle': 'Перемкнути мову',
+        'home.hero.title': 'Культурі потрібен простір',
+        'home.hero.text': 'Підтримайте публічну колекцію, яка допомагає незалежному культурному кіно залишатися живим.',
+        'home.hero.button': 'ДИВИТИСЯ РОЗКЛАД ->',
+        'program.eyebrow': 'Програма',
+        'program.title': 'Розклад сеансів',
+        'program.text': 'Оберіть день, фільм і час сеансу. Усі покази імпортуються з бази даних.',
+        'program.search': 'Пошук фільму або жанру',
+        'current.eyebrow': 'Зараз у кіно',
+        'current.title': 'Фільми, що зараз у кінотеатрі',
+        'current.text': 'Переглядайте актуальні фільми зі швидким доступом до деталей і доступних сеансів.',
+        'movie.notFound.title': 'Фільм не знайдено',
+        'movie.notFound.text': 'Обраний фільм не існує або був видалений з програми.',
+        'movie.notFound.back': 'ДО РОЗКЛАДУ',
+        'movie.title.1': 'Опівнічна погоня',
+        'movie.title.2': 'Мелодія зоряного світла',
+        'movie.title.3': 'Квантовий розлом',
+        'movie.title.4': 'Початок',
+        'movie.title.5': 'Інтерстеллар',
+        'movie.title.6': 'Темний лицар',
+        'movie.title.7': 'Початок',
+        'movie.title.8': 'Інтерстеллар',
+        'movie.title.9': 'Темний лицар',
+        'movie.sessions.eyebrow': 'Сеанси',
+        'movie.sessions.title': 'Доступні сеанси',
+        'movie.sessions.full': 'ВЕСЬ РОЗКЛАД',
+        'movie.minutes': 'хв',
+        'status.current': 'Актуальний',
+        'status.upcoming': 'Незабаром',
+        'label.next': 'Наступний',
+        'button.buy': 'КУПИТИ',
+        'button.detail': 'ДЕТАЛІ',
+        'button.search': 'ШУКАТИ',
+        'date.all': 'УСІ',
+        'date.today': 'СЬОГОДНІ',
+        'date.tomorrow': 'ЗАВТРА',
+        'date.monday': 'ПОНЕДІЛОК',
+        'date.tuesday': 'ВІВТОРОК',
+        'date.wednesday': 'СЕРЕДА',
+        'date.thursday': 'ЧЕТВЕР',
+        'date.friday': 'ПʼЯТНИЦЯ',
+        'date.saturday': 'СУБОТА',
+        'date.sunday': 'НЕДІЛЯ',
+        'empty.upcoming': 'Наразі немає майбутніх сеансів. Перевірте пізніше.',
+        'empty.selection': 'За вашим вибором сеансів не знайдено.',
+        'empty.current': 'Наразі немає фільмів у поточному показі. Перевірте пізніше.',
+        'empty.movieShows': 'Для цього фільму наразі немає майбутніх сеансів.',
+        'empty.movieShowsShort': 'Немає майбутнього сеансу',
+        'menu.page.title': 'Меню бару та кафе',
+        'menu.page.text': 'Снеки, напої та спеціальні пропозиції для вашого кіносеансу.',
+        'menu.page.empty': 'Меню оновлюється. Перевірте пізніше.',
+        'menu.category.snacks': 'Снеки',
+        'menu.category.drinks': 'Напої',
+        'menu.category.combo-deals': 'Комбо-пропозиції',
+        'menu.category.desserts': 'Десерти',
+        'info.title': 'Інформація та контакти',
+        'info.hours.title': 'Години роботи',
+        'info.hours.weekdays': 'Понеділок - четвер: 12:00 - 23:00',
+        'info.hours.weekend': 'Пʼятниця - неділя: 10:00 - 00:00',
+        'info.address.title': 'Адреса',
+        'info.contact.title': 'Контакти',
+        'info.contact.email': 'Email:',
+        'info.contact.phone': 'Телефон:',
+        'info.about.title': 'Про Grace',
+        'info.about.text1': 'Grace - це кінотеатр для актуальних фільмів, комфортних сеансів і швидкого доступу до розкладу, квитків та інформації для відвідувачів.',
+        'info.about.text2': 'На сайті можна переглядати фільми, перевіряти час сеансів, дивитися меню бару та керувати профілем в одному місці.',
+        'profile.title': 'Профіль',
+        'profile.welcome': 'Вітаємо',
+        'profile.email': 'Email:',
+        'profile.name': 'Імʼя:',
+        'profile.manage': 'Тут можна керувати бронюваннями та налаштуваннями.',
+        'profile.logout': 'Вийти',
+        'profile.guest.title': 'Гостьовий перегляд',
+        'profile.guest.text': 'Ви переглядаєте сайт як гість. Увійдіть в акаунт, щоб побачити інформацію профілю.',
+        'profile.nav.tickets': 'Квитки',
+        'profile.nav.reviews': 'Відгуки',
+        'profile.nav.settings': 'Налаштування',
+        'profile.tickets.upcoming': 'Майбутні події:',
+        'profile.tickets.past': 'Минулі події:',
+        'profile.tickets.empty': 'Заброньованих квитків не знайдено.',
+        'profile.browse': 'Переглянути майбутні події',
+        'profile.seat': 'Місце',
+        'profile.ticket': 'Квиток',
+        'profile.filmDetails': 'Деталі фільму',
+        'profile.reviews.title': 'Ваші відгуки:',
+        'profile.reviews.empty': 'Відвіданих подій немає',
+        'profile.review.add': 'Додати відгук',
+        'profile.review.publish': 'Опублікувати',
+        'profile.review.placeholder': 'Розкажіть про ваші враження',
+        'profile.review.yours': 'Ваш відгук',
+        'profile.settings.note': '* Рекомендуємо використовувати справжнє імʼя для зручнішої ідентифікації, якщо ваша email-адреса стане недоступною',
+        'auth.login.eyebrow': 'Раді бачити знову',
+        'auth.login.title': 'Вхід для користувача',
+        'auth.login.button': 'Увійти',
+        'auth.login.new': 'Вперше тут?',
+        'auth.login.register': 'Зареєструвати акаунт',
+        'auth.register.eyebrow': 'Створіть акаунт',
+        'auth.register.title': 'Реєстрація користувача',
+        'auth.register.button': 'Зареєструватися',
+        'auth.register.have': 'Вже маєте акаунт?',
+        'auth.register.login': 'Увійти',
+        'auth.email': 'Email',
+        'auth.password': 'Пароль',
+        'auth.name': 'Повне імʼя',
+        'admin.eyebrow': 'Адмін',
+        'admin.title': 'Керування кінотеатром',
+        'admin.subtitle': 'Додавайте та видаляйте фільми, сеанси й позиції меню.',
+        'admin.denied.title': 'Доступ заборонено',
+        'admin.denied.text': 'Ваш акаунт не має доступу до адмін-панелі.',
+        'admin.movies.title': 'Фільми',
+        'admin.schedules.title': 'Розклад',
+        'admin.menu.title': 'Позиції меню',
+        'admin.movie.title': 'Назва',
+        'admin.movie.genre': 'Жанр',
+        'admin.movie.duration': 'Тривалість',
+        'admin.movie.rating': 'Рейтинг',
+        'admin.movie.description': 'Опис',
+        'admin.movie.current': 'Зараз у показі',
+        'admin.schedule.movie': 'Фільм',
+        'admin.schedule.time': 'Час сеансу',
+        'admin.schedule.room': 'Зал',
+        'admin.schedule.price': 'Ціна',
+        'admin.menu.category': 'Категорія',
+        'admin.menu.name': 'Назва',
+        'admin.menu.description': 'Опис',
+        'admin.menu.price': 'Ціна',
+        'admin.addMovie': 'Додати фільм',
+        'admin.addSchedule': 'Додати сеанс',
+        'admin.addMenuItem': 'Додати позицію',
+        'admin.delete': 'Видалити',
+        'footer.rights': 'Усі права захищено.',
+    },
+};
+
+function readLanguageCookie(name) {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [key, value] = cookie.split('=');
+        if (key === name) {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
+}
+
+function writeLanguageCookie(name, value, days = 30) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
+
+function getStoredLanguage() {
+    return localStorage.getItem('siteLanguage') || readLanguageCookie('siteLanguage') || 'en';
+}
+
+function setStoredLanguage(language) {
+    localStorage.setItem('siteLanguage', language);
+    writeLanguageCookie('siteLanguage', language);
+}
+
+function translatePage(language) {
+    const dictionary = translations[language] || translations.en;
+    document.documentElement.lang = language === 'uk' ? 'uk' : 'en';
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (dictionary[key]) {
+            element.textContent = dictionary[key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (dictionary[key]) {
+            element.setAttribute('placeholder', dictionary[key]);
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-aria');
+        if (dictionary[key]) {
+            element.setAttribute('aria-label', dictionary[key]);
+            element.setAttribute('title', dictionary[key]);
+        }
+    });
+
+    document.querySelectorAll('[data-lang-code]').forEach((element) => {
+        element.textContent = language === 'uk' ? 'UK' : 'EN';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const langToggle = document.getElementById('langToggle');
+    const currentLanguage = getStoredLanguage();
+    translatePage(currentLanguage);
+
+    if (langToggle) {
+        langToggle.addEventListener('click', function() {
+            const nextLanguage = getStoredLanguage() === 'uk' ? 'en' : 'uk';
+            setStoredLanguage(nextLanguage);
+            translatePage(nextLanguage);
+        });
+    }
+});

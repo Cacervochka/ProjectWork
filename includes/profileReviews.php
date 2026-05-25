@@ -119,18 +119,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
 ?>
 
 <div class="profile-nav">
-    <button><a href="profile.php?viewSection=1">Tickets</a></button>
-    <button class="active"><a href="profile.php?viewSection=2">Reviews</a></button>
-    <button><a href="profile.php?viewSection=3">Settings</a></button>
+    <button><a href="profile.php?viewSection=1" data-i18n="profile.nav.tickets">Tickets</a></button>
+    <button class="active"><a href="profile.php?viewSection=2" data-i18n="profile.nav.reviews">Reviews</a></button>
+    <button><a href="profile.php?viewSection=3" data-i18n="profile.nav.settings">Settings</a></button>
 </div>
 
 <div class="profileSubSection">
-    <h3>Your reviews :</h3>
+    <h3 data-i18n="profile.reviews.title">Your reviews:</h3>
 
     <?php if (empty($pastTickets)): ?>
         <div>
-            <p>No events visited</p>
-            <a href="current.php">Browse upcoming events</a>
+            <p data-i18n="profile.reviews.empty">No events visited</p>
+            <a href="current.php" data-i18n="profile.browse">Browse upcoming events</a>
         </div>
     <?php else: ?>
 
@@ -140,20 +140,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
             <div class="eventElement">
                 <div>
                     <div>
-                        <h3><?= htmlspecialchars($t["title"]) ?></h3>
+                        <h3 data-i18n="movie.title.<?= (int) $t["movie_id"] ?>"><?= htmlspecialchars($t["title"]) ?></h3>
                         <p>
                             <?= date("d/m/Y - H:i", strtotime($t["show_time"])) ?>
                             - <?= htmlspecialchars($t["room"]) ?>
-                            - Seat <?= htmlspecialchars($t["seat_number"]) ?>
+                            - <span data-i18n="profile.seat">Seat</span> <?= htmlspecialchars($t["seat_number"]) ?>
                         </p>
                     </div>
 
                     <div>
                         <button>
-                            <a href="movie.php?id=<?= $t["movie_id"] ?>">Film details</a>
+                            <a href="movie.php?id=<?= $t["movie_id"] ?>" data-i18n="profile.filmDetails">Film details</a>
                         </button>
                         <button>
-                            <a href="ticket.php?id=<?= $t["ticket_id"] ?>">Ticket</a>
+                            <a href="ticket.php?id=<?= $t["ticket_id"] ?>" data-i18n="profile.ticket">Ticket</a>
                         </button>
                     </div>
                 </div>
@@ -167,8 +167,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
 
                         <form method="POST">
                             <div class="reviewHeader">
-                                <button type="button" class="add-review-btn">Add review</button>
-                                <button type="submit" class="publish-btn">Publish</button>
+                                <button type="button" class="add-review-btn" data-i18n="profile.review.add">Add review</button>
+                                <button type="submit" class="publish-btn" data-i18n="profile.review.publish">Publish</button>
                             </div>
 
                             <!-- rating (simple hidden or clickable later) -->
@@ -185,6 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
                             <textarea
                                 name="review_text"
                                 placeholder="Tell us about your experience"
+                                data-i18n-placeholder="profile.review.placeholder"
                                 maxlength="600"
                                 required></textarea>
 
@@ -197,7 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
                         <!-- ===================== -->
 
                         <div class="reviewHeader">
-                            <button class="add-review-btn">Your review</button>
+                            <button class="add-review-btn" data-i18n="profile.review.yours">Your review</button>
                         </div>
 
                         <div class="stars">

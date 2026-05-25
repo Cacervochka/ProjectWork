@@ -1,5 +1,7 @@
 :root {
     --color-button : #ebebeb;
+    --universal-dark-color : #1d1d1d;
+    --universal-grey-color : #b7b7b7;
 }
 
 .darkTheme {

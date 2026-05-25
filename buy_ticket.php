@@ -58,8 +58,8 @@ $takenStmt = $pdo->prepare('
 $takenStmt->execute(['schedule_id' => $scheduleId]);
 $takenSeats = array_column($takenStmt->fetchAll(PDO::FETCH_ASSOC), 'seat_number');
 
-$seatRows = ['A', 'B', 'C', 'D', 'E'];
-$seatNumbers = range(1, 8);
+$seatRows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+$seatNumbers = range(1, 22);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!hash_equals($_SESSION['ticket_csrf'] ?? '', $_POST['csrf'] ?? '')) {
@@ -107,6 +107,7 @@ include_once __DIR__ . '/includes/header.php';
 <section class="ticket-buy-shell">
     <div class="ticket-buy-heading">
         <span class="eyebrow" data-i18n="ticket.buy.eyebrow">Ticket</span>
+        <h3 data-i18n="movie.title.<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></h3>
         <h1 data-i18n="ticket.buy.title">Choose your seat</h1>
     </div>
 
@@ -114,30 +115,7 @@ include_once __DIR__ . '/includes/header.php';
         <p class="ticket-error"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
 
-    <div class="ticket-buy-grid">
-        <div class="ticket-summary-panel">
-            <h2 data-i18n="movie.title.<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></h2>
-            <p><?= htmlspecialchars($show['genre']) ?> / <?= (int) $show['duration'] ?> <span data-i18n="movie.minutes">min</span> / <?= htmlspecialchars($show['rating']) ?></p>
-            <dl>
-                <div>
-                    <dt data-i18n="ticket.date">Date</dt>
-                    <dd><?= htmlspecialchars(date('d/m/Y', strtotime($show['show_time']))) ?></dd>
-                </div>
-                <div>
-                    <dt data-i18n="ticket.time">Time</dt>
-                    <dd><?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?></dd>
-                </div>
-                <div>
-                    <dt data-i18n="ticket.room">Room</dt>
-                    <dd><?= htmlspecialchars($show['room']) ?></dd>
-                </div>
-                <div>
-                    <dt data-i18n="ticket.price">Price</dt>
-                    <dd>$<?= htmlspecialchars(number_format((float) $show['price'], 2)) ?></dd>
-                </div>
-            </dl>
-        </div>
-
+    <div class="ticket-buy">
         <form class="seat-panel" method="post">
             <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['ticket_csrf']) ?>">
             <input type="hidden" name="schedule_id" value="<?= (int) $show['schedule_id'] ?>">
@@ -165,9 +143,93 @@ include_once __DIR__ . '/includes/header.php';
                 <span><i class="selected"></i><span data-i18n="ticket.seat.selected">Selected</span></span>
             </div>
 
-            <button class="buy-button" type="submit" data-i18n="ticket.buy.confirm">Buy ticket</button>
+            <!-- Buy button -->
+            <button class="buy-button" type="button" id="openConfirmBtn" data-i18n="ticket.buy.confirm">
+                Buy ticket
+            </button>
+
+            <!-- Confirm Purchase Popup -->
+            <div class="purchase-popup hidden" id="purchasePopup">
+                <div class="purchase-popup-card">
+
+                    <div class="popup-header">
+                        <h2 data-i18n="ticket.confirm.title">Confirm ticket purchase</h2>
+                    </div>
+
+                    <div class="popup-movie-info">
+                        <h2 data-i18n="movie.title.<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></h2>
+                        <p><?= htmlspecialchars($show['genre']) ?> - <?= (int) $show['duration'] ?><span data-i18n="movie.minutes">m</span></p>
+                    </div>
+                    <hr>
+
+                    <div class="popup-details-grid">
+                        <div>
+                            <h3 data-i18n="ticket.datetime">Date & Time</h3>
+                            <p><?= htmlspecialchars(date('d/m/Y', strtotime($show['show_time']))) ?></p>
+                            <p><?= htmlspecialchars(date('H-i', strtotime($show['show_time']))) ?></p>
+                        </div>
+                        <div>
+                            <h3 data-i18n="ticket.room">Room</h3>
+                            <p><?= htmlspecialchars($show['room']) ?></p>
+                        </div>
+                        <div>
+                            <h3 data-i18n="ticket.seat">Seat</h3>
+                            <p id="selectedSeatText">-</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="popup-price">
+                        <h3 data-i18n="ticket.final_price">Final Price</h3>
+                        <p>$<?= htmlspecialchars(number_format((float) $show['price'], 2)) ?></p>
+                    </div>
+
+                    <div class="popup-actions">
+                        <button type="button" class="discard-btn" id="closePopupBtn">
+                            Discard
+                        </button>
+
+                        <button type="submit" class="confirm-btn">
+                            Confirm
+                        </button>
+                    </div>
+
+                </div>
+            </div>
         </form>
     </div>
 </section>
+
+<script>
+    const popup = document.getElementById("purchasePopup");
+    const openBtn = document.getElementById("openConfirmBtn");
+    const closeBtn = document.getElementById("closePopupBtn");
+
+    const seatText = document.getElementById("selectedSeatText");
+
+    openBtn.addEventListener("click", () => {
+
+        const selectedSeat = document.querySelector('input[name="seat_number"]:checked');
+
+        if (!selectedSeat) {
+            alert("Please select a seat first.");
+            return;
+        }
+
+        seatText.textContent = selectedSeat.value;
+
+        popup.classList.remove("hidden");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+    });
+
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.classList.add("hidden");
+        }
+    });
+</script>
 
 <?php include_once __DIR__ . '/includes/footer.php';

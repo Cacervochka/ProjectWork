@@ -71,6 +71,31 @@ if ($ticket['user_id'] != $currentUserId) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (
+        isset($_POST['refund_ticket']) &&
+        isset($_POST['ticket_id']) &&
+        (int)$_POST['ticket_id'] === $ticketId
+    ) {
+
+        $deleteStmt = $pdo->prepare("
+            DELETE FROM tickets
+            WHERE id = :ticket_id
+              AND user_id = :user_id
+            LIMIT 1
+        ");
+
+        $deleteStmt->execute([
+            'ticket_id' => $ticketId,
+            'user_id' => $currentUserId
+        ]);
+
+        header("Location: index.php");
+        exit;
+    }
+}
+
 // Format date/time
 $showDate = date("d/m/Y", strtotime($ticket['show_time']));
 $showTime = date("H:i", strtotime($ticket['show_time']));
@@ -85,7 +110,11 @@ include_once __DIR__ . '/includes/header.php';
         <div class="columnContainer">
 
             <div class="l_column">
-                <img src="./assets/extra/movie_poster_placeholder.jpg" alt="Movie Poster">
+                <div id="l_l_column">
+                    <img src="./assets/extra/movie_poster_placeholder.jpg" alt="Movie Poster">
+                    <button type="button" id="openRefundPopup" data-i18n="ticket.refund.title">Refund ticket</button>
+                </div>
+
 
                 <div>
                     <h3 data-i18n="movie.title.<?= (int) $ticket['movie_id'] ?>"><?= htmlspecialchars($ticket['title']) ?></h3>
@@ -137,4 +166,77 @@ include_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<?php include_once __DIR__ . '/includes/footer.php'; ?>
+<div class="refundPopup hidden" id="refundPopup">
+
+    <div class="refundPopupCard">
+
+        <h2 data-i18n="ticket.refund.title">Refund ticket</h2>
+
+        <div class="refundPopupBody">
+            <p data-i18n="ticket.refund.q">Are you sure you want to refund this ticket?</p>
+            
+            <h3><?= htmlspecialchars($ticket['title']) ?></h3>
+            <hr>
+            <div class="refundInfo">
+                <div>
+                    <span data-i18n="ticket.date">Date</span>
+                    <p><?= $showDate ?></p>
+                </div>
+
+                <div>
+                    <span data-i18n="ticket.time">Time</span>
+                    <p><?= $showTime ?></p>
+                </div>
+
+                <div>
+                    <span data-i18n="ticket.seat">Seat</span>
+                    <p><?= htmlspecialchars($ticket['seat_number']) ?></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="refundPopupActions">
+            <button type="button" class="cancelRefundBtn" id="closeRefundPopup">Cancel </button>
+
+            <form method="post">
+                <input type="hidden" name="ticket_id" value="<?= (int)$ticket['ticket_id'] ?>">
+                <input type="hidden" name="refund_ticket" value="1">
+                <button type="submit" class="confirmRefundBtn">Confirm</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const refundPopup = document.getElementById("refundPopup");
+
+    const openRefundPopupBtn = document.getElementById("openRefundPopup");
+
+    const closeRefundPopupBtn = document.getElementById("closeRefundPopup");
+
+    openRefundPopupBtn.addEventListener("click", () => {
+        refundPopup.classList.remove("hidden");
+    });
+
+    closeRefundPopupBtn.addEventListener("click", () => {
+        refundPopup.classList.add("hidden");
+    });
+
+    refundPopup.addEventListener("click", (e) => {
+
+        if (e.target === refundPopup) {
+            refundPopup.classList.add("hidden");
+        }
+
+    });
+</script>
+
+<?php
+
+
+
+include_once __DIR__ . '/includes/footer.php'; ?>

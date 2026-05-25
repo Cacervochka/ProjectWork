@@ -24,16 +24,10 @@ $dateTabs = fetchScheduleDateTabs($pdo);
 <section class="home-hero" aria-label="Featured cinema event">
     <button class="hero-arrow hero-arrow-left" type="button" aria-label="Previous slide">&lsaquo;</button>
     <div class="home-hero-panel">
-<<<<<<< HEAD
         <h1 data-i18n="home.hero.title">Culture needs space</h1>
         <p data-i18n="home.hero.text">Support the public collection that helps keep independent cultural cinema alive.</p>
         <a class="home-hero-button" href="programs.php" data-i18n="home.hero.button">SEE PROGRAM -></a>
-=======
-        <h1>Welcome to Grace</h1>
-        <p>Podporte verejnu zbierku, ktora pomoze zachranit fungovanie nezavislych kulturnych centier.</p>
-        <a class="home-hero-button" href="programs.php">CHCEM PODPORIT -></a>
 
->>>>>>> origin/main
     </div>
     <div class="home-hero-image"></div>
     <button class="hero-arrow hero-arrow-right" type="button" aria-label="Next slide">&rsaquo;</button>
@@ -58,7 +52,7 @@ $dateTabs = fetchScheduleDateTabs($pdo);
                     <time class="show-time" datetime="<?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>">
                         <?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>
                     </time>
-                    <h2><a href="movie.php?id=<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></a></h2>
+                    <h2><a href="movie.php?id=<?= (int) $show['movie_id'] ?>" data-i18n="movie.title.<?= (int) $show['movie_id'] ?>"><?= htmlspecialchars($show['title']) ?></a></h2>
                     <div class="show-meta">
                         <span class="room-badge"><?= htmlspecialchars($show['room']) ?></span>
                         <span>2D</span>
@@ -73,7 +67,5 @@ $dateTabs = fetchScheduleDateTabs($pdo);
         <?php endif; ?>
     </div>
 </section>
-
-<script type="text/javascript" src="js/colorTheme.js"></script>
 
 <?php include_once __DIR__ . '/includes/footer.php';

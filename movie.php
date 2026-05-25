@@ -50,10 +50,10 @@ if ($movie) {
         </div>
         <div class="movie-detail-content">
             <span class="eyebrow"><?= htmlspecialchars($movie['genre']) ?></span>
-            <h1><?= htmlspecialchars($movie['title']) ?></h1>
+            <h1 data-i18n="movie.title.<?= (int) $movie['id'] ?>"><?= htmlspecialchars($movie['title']) ?></h1>
             <p><?= htmlspecialchars($movie['description']) ?></p>
             <div class="movie-facts">
-                <span><?= htmlspecialchars($movie['duration']) ?> min</span>
+                <span><?= htmlspecialchars($movie['duration']) ?> <span data-i18n="movie.minutes">min</span></span>
                 <span><?= htmlspecialchars($movie['rating']) ?></span>
                 <span data-i18n="<?= $movie['is_current'] ? 'status.current' : 'status.upcoming' ?>"><?= $movie['is_current'] ? 'Current' : 'Upcoming' ?></span>
             </div>
@@ -79,7 +79,7 @@ if ($movie) {
                         <time class="show-time" datetime="<?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>">
                             <?= htmlspecialchars(date('H:i', strtotime($show['show_time']))) ?>
                         </time>
-                        <h2><?= htmlspecialchars($movie['title']) ?></h2>
+                        <h2 data-i18n="movie.title.<?= (int) $movie['id'] ?>"><?= htmlspecialchars($movie['title']) ?></h2>
                         <div class="show-meta">
                             <span class="room-badge"><?= htmlspecialchars($show['room']) ?></span>
                             <span>2D</span>

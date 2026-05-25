@@ -49,20 +49,20 @@ foreach ($tickets as $ticket) {
 ?>
 
 <div class="profile-nav">
-    <button class="active"><a href="profile.php?viewSection=1">Tickets</a></button>
-    <button><a href="profile.php?viewSection=2">Reviews</a></button>
-    <button><a href="profile.php?viewSection=3">Settings</a></button>
+    <button class="active"><a href="profile.php?viewSection=1" data-i18n="profile.nav.tickets">Tickets</a></button>
+    <button><a href="profile.php?viewSection=2" data-i18n="profile.nav.reviews">Reviews</a></button>
+    <button><a href="profile.php?viewSection=3" data-i18n="profile.nav.settings">Settings</a></button>
 </div>
 
 <div class="profileSubSection">
 
     <!-- UPCOMING -->
-    <h3>Upcoming Events :</h3>
+    <h3 data-i18n="profile.tickets.upcoming">Upcoming Events:</h3>
 
     <?php if (empty($upcoming)): ?>
         <div>
-            <p>No reserved tickets found.</p>
-            <a href="programs.php">Browse upcoming events</a>
+            <p data-i18n="profile.tickets.empty">No reserved tickets found.</p>
+            <a href="programs.php" data-i18n="profile.browse">Browse upcoming events</a>
         </div>
     <?php else: ?>
 
@@ -70,19 +70,19 @@ foreach ($tickets as $ticket) {
             <div class="eventElement">
                 <div>
                     <div>
-                        <h3><?= htmlspecialchars($ticket["title"]) ?></h3>
+                        <h3 data-i18n="movie.title.<?= (int) $ticket["movie_id"] ?>"><?= htmlspecialchars($ticket["title"]) ?></h3>
                         <p>
                             <?= date("d/m/Y - H:i", strtotime($ticket["show_time"])) ?>
                             - <?= htmlspecialchars($ticket["room"]) ?>
-                            - Seat <?= htmlspecialchars($ticket["seat_number"]) ?>
+                            - <span data-i18n="profile.seat">Seat</span> <?= htmlspecialchars($ticket["seat_number"]) ?>
                         </p>
                     </div>
                     <div>
                         <button>
-                            <a href="movie.php?id=<?= $ticket["movie_id"] ?>">Film details</a>
+                            <a href="movie.php?id=<?= $ticket["movie_id"] ?>" data-i18n="profile.filmDetails">Film details</a>
                         </button>
                         <button>
-                            <a href="ticket.php?id=<?= $ticket["ticket_id"] ?>">Ticket</a>
+                            <a href="ticket.php?id=<?= $ticket["ticket_id"] ?>" data-i18n="profile.ticket">Ticket</a>
                         </button>
                     </div>
                 </div>
@@ -98,32 +98,32 @@ foreach ($tickets as $ticket) {
     <?php if (!empty($past)): ?>
 
         <hr>
-        <h3>Past Events :</h3>
+        <h3 data-i18n="profile.tickets.past">Past Events:</h3>
 
         <?php foreach ($past as $ticket): ?>
             <div class="eventElement">
                 <div>
                     <div>
-                        <h3><?= htmlspecialchars($ticket["title"]) ?></h3>
+                        <h3 data-i18n="movie.title.<?= (int) $ticket["movie_id"] ?>"><?= htmlspecialchars($ticket["title"]) ?></h3>
                         <p>
                             <?= date("d/m/Y - H:i", strtotime($ticket["show_time"])) ?>
                             - <?= htmlspecialchars($ticket["room"]) ?>
-                            - Seat <?= htmlspecialchars($ticket["seat_number"]) ?>
+                            - <span data-i18n="profile.seat">Seat</span> <?= htmlspecialchars($ticket["seat_number"]) ?>
                         </p>
                     </div>
                     <div>
                         <button>
-                            <a href="movie.php?id=<?= $ticket["movie_id"] ?>">Film details</a>
+                            <a href="movie.php?id=<?= $ticket["movie_id"] ?>" data-i18n="profile.filmDetails">Film details</a>
                         </button>
                         <button>
-                            <a href="ticket.php?id=<?= $ticket["ticket_id"] ?>">Ticket</a>
+                            <a href="ticket.php?id=<?= $ticket["ticket_id"] ?>" data-i18n="profile.ticket">Ticket</a>
                         </button>
                     </div>
                 </div>
 
                 <button>
                     <a href="profile.php?viewSection=2">
-                        Add review
+                        <span data-i18n="profile.review.add">Add review</span>
                     </a>
                 </button>
             </div>

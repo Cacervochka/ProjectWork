@@ -81,8 +81,8 @@ $dateTabs = fetchScheduleDateTabs($pdo);
                         <?= htmlspecialchars(date('H:i', strtotime($program['show_time']))) ?>
                     </time>
                     <div class="program-title-cell">
-                        <a href="movie.php?id=<?= (int) $program['movie_id'] ?>"><?= htmlspecialchars($program['title']) ?></a>
-                        <p><?= htmlspecialchars($program['genre']) ?> / <?= htmlspecialchars($program['duration']) ?> min</p>
+                        <a href="movie.php?id=<?= (int) $program['movie_id'] ?>" data-i18n="movie.title.<?= (int) $program['movie_id'] ?>"><?= htmlspecialchars($program['title']) ?></a>
+                        <p><?= htmlspecialchars($program['genre']) ?> / <?= htmlspecialchars($program['duration']) ?> <span data-i18n="movie.minutes">min</span></p>
                     </div>
                     <div class="show-meta">
                         <span class="room-badge"><?= htmlspecialchars($program['room']) ?></span>

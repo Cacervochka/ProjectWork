@@ -18,7 +18,6 @@ $currentStmt->execute();
 $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<<<<<<< HEAD
 <section class="page-hero movies-hero">
     <div class="page-hero-panel">
         <span class="eyebrow" data-i18n="current.eyebrow">Now showing</span>
@@ -27,27 +26,23 @@ $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="page-hero-image"></div>
 </section>
-=======
-<section class="section">
-    <h1>Currently Showing</h1>
-    <p>See what’s playing now at Grace.</p>
->>>>>>> origin/main
+
 
 <section class="program-shell movie-grid-shell">
     <?php if ($currentMovies): ?>
         <div class="movie-card-grid">
             <?php foreach ($currentMovies as $movie): ?>
                 <article class="movie-card">
-                    <a class="movie-poster" href="movie.php?id=<?= (int) $movie['id'] ?>" aria-label="Open <?= htmlspecialchars($movie['title']) ?>">
+                    <a class="movie-poster" href="movie.php?id=<?= (int) $movie['id'] ?>" aria-label="<?= htmlspecialchars($movie['title']) ?>" data-i18n-aria="movie.title.<?= (int) $movie['id'] ?>">
                         <span><?= htmlspecialchars(substr($movie['title'], 0, 1)) ?></span>
                     </a>
                     <div class="movie-card-content">
                         <div class="movie-card-meta">
                             <span><?= htmlspecialchars($movie['genre']) ?></span>
                             <span><?= htmlspecialchars($movie['rating']) ?></span>
-                            <span><?= htmlspecialchars($movie['duration']) ?> min</span>
+                            <span><?= htmlspecialchars($movie['duration']) ?> <span data-i18n="movie.minutes">min</span></span>
                         </div>
-                        <h2><a href="movie.php?id=<?= (int) $movie['id'] ?>"><?= htmlspecialchars($movie['title']) ?></a></h2>
+                        <h2><a href="movie.php?id=<?= (int) $movie['id'] ?>" data-i18n="movie.title.<?= (int) $movie['id'] ?>"><?= htmlspecialchars($movie['title']) ?></a></h2>
                         <p><?= htmlspecialchars($movie['description']) ?></p>
                         <div class="movie-card-actions">
                             <?php if ($movie['next_show']): ?>
@@ -67,5 +62,6 @@ $currentMovies = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
         <p class="empty-program" data-i18n="empty.current">No movies are currently marked as playing. Check back again soon.</p>
     <?php endif; ?>
 </section>
+
 
 <?php include_once __DIR__ . '/includes/footer.php';

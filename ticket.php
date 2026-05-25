@@ -4,11 +4,10 @@ session_start();
 $pageTitle = 'Ticket';
 
 include_once __DIR__ . '/includes/db.php';
-include_once __DIR__ . '/includes/header.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: authorisation.php?action=1");
     exit;
 }
 
@@ -35,6 +34,7 @@ $query = "
         schedules.price AS schedule_price,
 
         movies.title,
+        movies.id AS movie_id,
         movies.genre,
         movies.duration,
         movies.description,
@@ -74,11 +74,13 @@ if ($ticket['user_id'] != $currentUserId) {
 // Format date/time
 $showDate = date("d/m/Y", strtotime($ticket['show_time']));
 $showTime = date("H:i", strtotime($ticket['show_time']));
+
+include_once __DIR__ . '/includes/header.php';
 ?>
 
 <section class="section ticketSection">
     <div class="ticketSectionContent">
-        <h2>Ticket #<?= htmlspecialchars($ticket['ticket_id']) ?></h2>
+        <h2><span data-i18n="ticket.title">Ticket</span> #<?= htmlspecialchars($ticket['ticket_id']) ?></h2>
 
         <div class="columnContainer">
 
@@ -86,19 +88,19 @@ $showTime = date("H:i", strtotime($ticket['show_time']));
                 <img src="./assets/extra/movie_poster_placeholder.jpg" alt="Movie Poster">
 
                 <div>
-                    <h3><?= htmlspecialchars($ticket['title']) ?></h3>
+                    <h3 data-i18n="movie.title.<?= (int) $ticket['movie_id'] ?>"><?= htmlspecialchars($ticket['title']) ?></h3>
 
-                    <p>Rating: <?= htmlspecialchars($ticket['rating']) ?>/10</p>
+                    <p><span data-i18n="ticket.rating">Rating:</span> <?= htmlspecialchars($ticket['rating']) ?>/10</p>
 
                     <p>
                         <?= htmlspecialchars($ticket['genre']) ?>
                         *
-                        <?= htmlspecialchars($ticket['duration']) ?> min
+                        <?= htmlspecialchars($ticket['duration']) ?> <span data-i18n="movie.minutes">min</span>
                     </p>
 
                     <hr>
 
-                    <h3>Description</h3>
+                    <h3 data-i18n="ticket.description">Description</h3>
 
                     <p>
                         <?= nl2br(htmlspecialchars($ticket['description'])) ?>
@@ -109,22 +111,22 @@ $showTime = date("H:i", strtotime($ticket['show_time']));
             <div class="r_column">
 
                 <div class="infoCard">
-                    <h3>Date & Time</h3>
+                    <h3 data-i18n="ticket.datetime">Date & Time</h3>
 
-                    <p>Date</p>
+                    <p data-i18n="ticket.date">Date</p>
                     <p><?= $showDate ?></p>
 
-                    <p>Time</p>
+                    <p data-i18n="ticket.time">Time</p>
                     <p><?= $showTime ?></p>
                 </div>
 
                 <div class="infoCard">
-                    <h3>Seating Info</h3>
+                    <h3 data-i18n="ticket.seating">Seating Info</h3>
 
-                    <p>Room</p>
+                    <p data-i18n="ticket.room">Room</p>
                     <p><?= htmlspecialchars($ticket['room']) ?></p>
 
-                    <p>Seat</p>
+                    <p data-i18n="profile.seat">Seat</p>
                     <p><?= htmlspecialchars($ticket['seat_number']) ?></p>
 
                 </div>

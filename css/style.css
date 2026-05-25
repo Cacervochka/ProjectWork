@@ -6,10 +6,17 @@
 
 body {
     margin: 0;
-    font-family: Inter, Arial, sans-serif;
+    font-family: Arial, "Helvetica Neue", sans-serif;
     background: var(--body-background);
     color: var(--body-color);
     line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 .container {

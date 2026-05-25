@@ -60,3 +60,179 @@
 .r_column .infoCard {
     width: 100%;
 }
+
+.ticket-buy-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 42px 0 70px;
+}
+
+.ticket-buy-heading {
+    margin-bottom: 24px;
+}
+
+.ticket-buy-heading h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    line-height: 1.1;
+}
+
+.ticket-buy-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    gap: 24px;
+}
+
+.ticket-summary-panel,
+.seat-panel {
+    padding: 24px;
+    background: var(--container-background-3);
+    border: 1px solid var(--container-border);
+    border-radius: 8px;
+}
+
+.ticket-summary-panel h2,
+.ticket-summary-panel p {
+    margin-top: 0;
+}
+
+.ticket-summary-panel p {
+    color: var(--body-color-dark);
+}
+
+.ticket-summary-panel dl {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0 0;
+}
+
+.ticket-summary-panel dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--container-border);
+}
+
+.ticket-summary-panel dt,
+.ticket-summary-panel dd {
+    margin: 0;
+}
+
+.ticket-summary-panel dt {
+    color: var(--body-color-dark);
+    font-weight: 700;
+}
+
+.screen {
+    width: min(440px, 100%);
+    margin: 0 auto 28px;
+    padding: 10px;
+    color: #181818;
+    background: var(--accent-color-1);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(44px, 1fr));
+    gap: 10px;
+}
+
+.seat-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.seat-option span {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--body-color);
+    background: var(--container-background-4);
+    border: 1px solid var(--container-border);
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.seat-option input:checked + span {
+    color: #181818;
+    background: var(--accent-color-1);
+    border-color: var(--accent-color-1);
+}
+
+.seat-option.taken span {
+    color: #fff;
+    background: var(--error-hightlight);
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.seat-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 22px 0;
+    color: var(--body-color-dark);
+    font-size: 0.92rem;
+}
+
+.seat-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.seat-legend i {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid var(--container-border);
+    background: var(--container-background-4);
+}
+
+.seat-legend i.taken {
+    background: var(--error-hightlight);
+}
+
+.seat-legend i.selected {
+    background: var(--accent-color-1);
+}
+
+.seat-panel .buy-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+}
+
+.ticket-error {
+    padding: 12px 14px;
+    color: #fff;
+    background: var(--error-hightlight);
+    border-radius: 6px;
+}
+
+@media (max-width: 820px) {
+    .ticket-buy-grid,
+    .columnContainer {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .l_column,
+    .r_column,
+    .ticketSectionContent {
+        width: 100%;
+    }
+
+    .seat-grid {
+        grid-template-columns: repeat(4, minmax(44px, 1fr));
+    }
+}

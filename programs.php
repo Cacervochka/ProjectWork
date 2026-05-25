@@ -89,7 +89,7 @@ $dateTabs = fetchScheduleDateTabs($pdo);
                         <span>2D</span>
                         <span><?= htmlspecialchars($program['rating']) ?></span>
                     </div>
-                    <a class="buy-button" href="movie.php?id=<?= (int) $program['movie_id'] ?>" data-i18n="button.detail">DETAIL</a>
+                    <a class="buy-button" href="buy_ticket.php?schedule_id=<?= (int) $program['schedule_id'] ?>" data-i18n="button.buy">BUY</a>
                 </article>
             <?php endforeach; ?>
         <?php else: ?>

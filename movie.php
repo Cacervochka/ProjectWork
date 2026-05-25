@@ -85,7 +85,7 @@ if ($movie) {
                             <span>2D</span>
                             <span>$<?= htmlspecialchars(number_format((float) $show['price'], 2)) ?></span>
                         </div>
-                        <a class="buy-button" href="programs.php" data-i18n="button.buy">BUY</a>
+                        <a class="buy-button" href="buy_ticket.php?schedule_id=<?= (int) $show['schedule_id'] ?>" data-i18n="button.buy">BUY</a>
                     </article>
                 <?php endforeach; ?>
             <?php else: ?>

@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Europe/Kyiv');
 
-// get past tickets (already watched movies)
+// get tickets for review section
 $sql = "
 SELECT 
     t.id AS ticket_id,
@@ -9,6 +9,7 @@ SELECT
     
     s.show_time,
     s.room,
+    CASE WHEN s.show_time < NOW() THEN 1 ELSE 0 END AS can_review,
 
     m.id AS movie_id,
     m.title
@@ -18,7 +19,6 @@ JOIN schedules s ON t.schedule_id = s.id
 JOIN movies m ON s.movie_id = m.id
 
 WHERE t.user_id = :user_id
-AND s.show_time < NOW()
 
 ORDER BY s.show_time DESC
 ";
@@ -41,81 +41,6 @@ foreach ($reviewStmt->fetchAll(PDO::FETCH_ASSOC) as $r) {
 }
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
-
-    $movieId = $_POST["movie_id"];
-    $text = trim($_POST["review_text"]);
-    $rating = (int)($_POST["rating"] ?? 0);
-
-    // basic validation
-    if ($movieId && $text !== "") {
-
-        // check if review exists
-        $check = $pdo->prepare("
-            SELECT id FROM reviews 
-            WHERE user_id = :uid AND movie_id = :mid
-        ");
-        $check->execute([
-            'uid' => $user["id"],
-            'mid' => $movieId
-        ]);
-
-        if ($check->fetch()) {
-            if ($check->fetch()) {
-
-                // update review text
-                $updReview = $pdo->prepare("
-        UPDATE reviews 
-        SET review_text = :text
-        WHERE user_id = :uid AND movie_id = :mid
-    ");
-                $updReview->execute([
-                    'text' => $text,
-                    'uid' => $user["id"],
-                    'mid' => $movieId
-                ]);
-
-                // update rating
-                $updRating = $pdo->prepare("
-        UPDATE movie_ratings 
-        SET rating = :rating
-        WHERE user_id = :uid AND movie_id = :mid
-    ");
-                $updRating->execute([
-                    'rating' => $rating,
-                    'uid' => $user["id"],
-                    'mid' => $movieId
-                ]);
-            }
-        } else {
-            // insert review text
-            $insReview = $pdo->prepare("
-        INSERT INTO reviews (movie_id, user_id, review_text, created_at)
-        VALUES (:mid, :uid, :text, NOW())
-    ");
-            $insReview->execute([
-                'mid' => $movieId,
-                'uid' => $user["id"],
-                'text' => $text
-            ]);
-
-            // insert rating
-            $insRating = $pdo->prepare("
-        INSERT INTO movie_ratings (movie_id, user_id, rating)
-        VALUES (:mid, :uid, :rating)
-    ");
-            $insRating->execute([
-                'mid' => $movieId,
-                'uid' => $user["id"],
-                'rating' => $rating
-            ]);
-        }
-
-        header("Location: profile.php?viewSection=2");
-        exit;
-    }
-}
-
 ?>
 
 <div class="profile-nav">
@@ -135,7 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
     <?php else: ?>
 
         <?php foreach ($pastTickets as $t): ?>
-            <?php $review = $reviews[$t["movie_id"]] ?? null; ?>
+            <?php
+            $review = $reviews[$t["movie_id"]] ?? null;
+            $canReview = (bool) $t["can_review"];
+            ?>
 
             <div class="eventElement">
                 <div>
@@ -160,12 +88,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
 
                 <div class="reviewElement">
 
-                    <?php if (!$review): ?>
+                    <?php if (!$review && $canReview): ?>
                         <!-- ===================== -->
                         <!-- NO REVIEW → FORM -->
                         <!-- ===================== -->
 
-                        <form method="POST">
+                        <form method="POST" action="profile.php?viewSection=2">
                             <div class="reviewHeader">
                                 <button type="button" class="add-review-btn" data-i18n="profile.review.add">Add review</button>
                                 <button type="submit" class="publish-btn" data-i18n="profile.review.publish">Publish</button>
@@ -190,9 +118,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
                                 required></textarea>
 
                             <input type="hidden" name="movie_id" value="<?= $t["movie_id"] ?>">
+                            <input type="hidden" name="save_review" value="1">
                         </form>
 
-                    <?php else: ?>
+                    <?php elseif ($review): ?>
                         <!-- ===================== -->
                         <!-- EXISTING REVIEW -->
                         <!-- ===================== -->
@@ -206,6 +135,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["movie_id"])) {
                         </div>
 
                         <p><?= htmlspecialchars($review["review_text"]) ?></p>
+
+                    <?php else: ?>
+                        <p data-i18n="profile.review.afterShow">You can leave a review after the show.</p>
 
                     <?php endif; ?>
 

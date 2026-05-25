@@ -1,10 +1,14 @@
 <div class="authForm longForm">
+    <?php $redirectTarget = $_GET['redirect'] ?? ''; ?>
     <div class="auth-heading">
         <p data-i18n="auth.register.eyebrow">Create your account</p>
         <h1 data-i18n="auth.register.title">Member Registration</h1>
     </div>
 
     <form method="post" action="profile.php">
+        <?php if ($redirectTarget !== ''): ?>
+            <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirectTarget) ?>">
+        <?php endif; ?>
         <div class="auth-field">
             <label for="name" data-i18n="auth.name">Full name</label>
             <input type="text" id="name" name="name" autocomplete="name" required>

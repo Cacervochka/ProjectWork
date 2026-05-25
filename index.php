@@ -59,7 +59,7 @@ $dateTabs = fetchScheduleDateTabs($pdo);
                         <span><?= htmlspecialchars(strtoupper(substr($show['genre'], 0, 2))) ?></span>
                         <span><?= htmlspecialchars($show['rating']) ?></span>
                     </div>
-                    <a class="buy-button" href="programs.php" data-i18n="button.buy">BUY</a>
+                    <a class="buy-button" href="buy_ticket.php?schedule_id=<?= (int) $show['schedule_id'] ?>" data-i18n="button.buy">BUY</a>
                 </article>
             <?php endforeach; ?>
         <?php else: ?>

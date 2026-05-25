@@ -24,12 +24,9 @@ function navActive($filename)
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/aboutUs.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/admin.css">
-=======
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/ticket.css">
->>>>>>> origin/main
+    <link rel="stylesheet" href="css/admin.css">
     <script defer src="js/app.js"></script>
     <script defer src="js/colorTheme.js"></script>
     <script defer src="js/lang.js"></script>
@@ -59,7 +56,7 @@ function navActive($filename)
                     </div>
                     <a class="<?= navActive('info.php') ?>" href="info.php" data-i18n="nav.info">Info</a>
                     <a class="<?= navActive('profile.php') ?>" href="profile.php" data-i18n="nav.profile">Profile</a>
-                    <?php if (!empty($_SESSION['user'])): ?>
+                    <?php if (!empty($_SESSION['user']['is_admin'])): ?>
                         <a class="<?= navActive('admin.php') ?>" href="admin.php" data-i18n="nav.admin">Admin</a>
                     <?php endif; ?>
                 </nav>

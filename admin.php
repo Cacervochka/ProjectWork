@@ -5,13 +5,22 @@ session_start();
 include_once __DIR__ . '/includes/db.php';
 
 $currentUser = $_SESSION['user'] ?? null;
-$adminEmailsRaw = $_ENV['ADMIN_EMAILS'] ?? ($_ENV['ADMIN_EMAIL'] ?? '');
-$adminEmails = array_filter(array_map('trim', explode(',', $adminEmailsRaw)));
-$isAdmin = $currentUser && (!$adminEmails || in_array($currentUser['email'], $adminEmails, true));
+$isAdmin = false;
 
 if (!$currentUser) {
     header('Location: authorisation.php?action=1');
     exit;
+}
+
+try {
+    $adminStmt = $pdo->prepare('SELECT is_admin FROM users WHERE id = :id LIMIT 1');
+    $adminStmt->execute(['id' => $currentUser['id']]);
+    $adminRow = $adminStmt->fetch(PDO::FETCH_ASSOC);
+    $isAdmin = !empty($adminRow['is_admin']);
+    $_SESSION['user']['is_admin'] = $isAdmin;
+} catch (Throwable $e) {
+    $isAdmin = false;
+    $_SESSION['user']['is_admin'] = false;
 }
 
 if (!$isAdmin) {

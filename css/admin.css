@@ -146,7 +146,8 @@
 }
 
 .admin-list-row div {
-    min-width: 0;
+    min-width: 180px;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -154,7 +155,8 @@
 
 .admin-list-row strong,
 .admin-list-row span {
-    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 .admin-list-row span {
@@ -166,8 +168,13 @@
     flex: 0 0 auto;
 }
 
+.admin-list-row button {
+    min-width: 96px;
+}
+
 .admin-list-row button.danger {
     color: #fff;
+    max-width: 20px;
     background: var(--error-hightlight);
 }
 

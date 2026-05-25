@@ -3,31 +3,6 @@ $pageTitle = 'Bar & Cafeteria';
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-<<<<<<< HEAD
-<section class="section">
-    <h1 data-i18n="menu.page.title">Bar & Cafeteria Menu</h1>
-    <p data-i18n="menu.page.text">Enjoy snacks, drinks, and specials designed for your movie experience.</p>
-
-    <?php if ($menuByCategory): ?>
-        <?php foreach ($menuByCategory as $category => $items): ?>
-            <?php $categorySlug = strtolower(str_replace(' ', '-', $category)); ?>
-            <div class="menu-category" id="<?= htmlspecialchars($categorySlug) ?>">
-                <h2 data-i18n="menu.category.<?= htmlspecialchars($categorySlug) ?>"><?= htmlspecialchars($category) ?></h2>
-                <ul class="menu-list">
-                    <?php foreach ($items as $item): ?>
-                        <li>
-                            <strong><?= htmlspecialchars($item['name']) ?></strong>
-                            <span class="menu-price">$<?= number_format($item['price'], 2) ?></span>
-                            <p><?= htmlspecialchars($item['description']) ?></p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p data-i18n="menu.page.empty">The menu is being updated. Please check again later.</p>
-    <?php endif; ?>
-=======
 <section class="section menuSection">
     <div class="menuSectionContent">
         <h2>Popular</h2>
@@ -89,7 +64,6 @@ include_once __DIR__ . '/includes/header.php';
             </div>
         </div>
     </div>
->>>>>>> origin/main
 </section>
 
 <?php include_once __DIR__ . '/includes/footer.php';

@@ -1,6 +1,72 @@
 <?php
 date_default_timezone_set('Europe/Kyiv');
 
+/* =========================
+   SAVE REVIEW
+========================= */
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["save_review"])) {
+    echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+    $movieId = (int)$_POST["movie_id"];
+    $rating = (int)$_POST["rating"];
+    $reviewText = trim($_POST["review_text"]);
+
+    if ($rating < 1 || $rating > 5) {
+        $rating = 5;
+    }
+
+    if ($reviewText !== "") {
+
+        // save review text
+        $insertReview = $pdo->prepare("
+            INSERT INTO reviews (
+                user_id,
+                movie_id,
+                review_text,
+                created_at
+            )
+            VALUES (
+                :user_id,
+                :movie_id,
+                :review_text,
+                NOW()
+            )
+        ");
+
+        $insertReview->execute([
+            'user_id' => $user["id"],
+            'movie_id' => $movieId,
+            'review_text' => $reviewText
+        ]);
+
+        // save numeric rating
+        $insertRating = $pdo->prepare("
+            INSERT INTO movie_ratings (
+                movie_id,
+                user_id,
+                rating
+            )
+            VALUES (
+                :movie_id,
+                :user_id,
+                :rating
+            )
+        ");
+
+        $insertRating->execute([
+            'movie_id' => $movieId,
+            'user_id' => $user["id"],
+            'rating' => $rating
+        ]);
+
+        header("Location: profile.php?viewSection=2");
+        exit;
+    }
+}
+
 // get tickets for review section
 $sql = "
 SELECT 
@@ -9,7 +75,7 @@ SELECT
     
     s.show_time,
     s.room,
-    CASE WHEN s.show_time < NOW() THEN 1 ELSE 0 END AS can_review,
+    CASE WHEN DATE(s.show_time) <= CURDATE() THEN 1 ELSE 0 END AS can_review,
 
     m.id AS movie_id,
     m.title
@@ -100,7 +166,7 @@ foreach ($reviewStmt->fetchAll(PDO::FETCH_ASSOC) as $r) {
                             </div>
 
                             <!-- rating (simple hidden or clickable later) -->
-                            <input type="hidden" name="rating" class="ratingInput" value="0">
+                            <input type="hidden" name="rating" class="ratingInput" value="5">
 
                             <div class="stars starRating">
                                 <span data-value="1">☆</span>

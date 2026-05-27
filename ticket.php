@@ -119,11 +119,11 @@ include_once __DIR__ . '/includes/header.php';
                 <div>
                     <h3 data-i18n="movie.title.<?= (int) $ticket['movie_id'] ?>"><?= htmlspecialchars($ticket['title']) ?></h3>
 
-                    <p><span data-i18n="ticket.rating">Rating:</span> <?= htmlspecialchars($ticket['rating']) ?>/10</p>
+                    <p><span data-i18n="ticket.rating">Rating:</span> <?= htmlspecialchars($ticket['rating']) ?></p>
 
                     <p>
                         <?= htmlspecialchars($ticket['genre']) ?>
-                        *
+                        -
                         <?= htmlspecialchars($ticket['duration']) ?> <span data-i18n="movie.minutes">min</span>
                     </p>
 

@@ -8,14 +8,25 @@ include_once __DIR__ . '/includes/schedule_helpers.php';
 
 $search = trim($_GET['q'] ?? '');
 $selectedDate = trim($_GET['date'] ?? '');
-$dateFilter = DateTimeImmutable::createFromFormat('Y-m-d', $selectedDate) ? $selectedDate : '';
+$dateFilter = DateTimeImmutable::createFromFormat('Y-m-d', $selectedDate)
+    ? $selectedDate
+    : '';
 
 $where = ['s.show_time >= NOW()'];
 $params = [];
 
 if ($search !== '') {
-    $where[] = '(m.title LIKE :search OR m.genre LIKE :search OR m.description LIKE :search)';
-    $params['search'] = '%' . $search . '%';
+    $where[] = '(
+        m.title LIKE :search_title
+        OR m.genre LIKE :search_genre
+        OR m.description LIKE :search_description
+    )';
+
+    $searchValue = '%' . $search . '%';
+
+    $params['search_title'] = $searchValue;
+    $params['search_genre'] = $searchValue;
+    $params['search_description'] = $searchValue;
 }
 
 if ($dateFilter !== '') {
@@ -23,15 +34,27 @@ if ($dateFilter !== '') {
     $params['date_filter'] = $dateFilter;
 }
 
-$programsStmt = $pdo->prepare(
-    'SELECT s.id AS schedule_id, m.id AS movie_id, m.title, m.genre, m.duration, m.description,
-            s.show_time, s.room, s.price, m.rating
-     FROM schedules s
-     JOIN movies m ON s.movie_id = m.id
-     WHERE ' . implode(' AND ', $where) . '
-     ORDER BY s.show_time ASC'
-);
+$sql = '
+    SELECT
+        s.id AS schedule_id,
+        m.id AS movie_id,
+        m.title,
+        m.genre,
+        m.duration,
+        m.description,
+        s.show_time,
+        s.room,
+        s.price,
+        m.rating
+    FROM schedules s
+    JOIN movies m ON s.movie_id = m.id
+    WHERE ' . implode(' AND ', $where) . '
+    ORDER BY s.show_time ASC
+';
+
+$programsStmt = $pdo->prepare($sql);
 $programsStmt->execute($params);
+
 $programs = $programsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 $dateTabs = fetchScheduleDateTabs($pdo);

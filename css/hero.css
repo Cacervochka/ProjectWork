@@ -145,7 +145,8 @@ button {
     background: var(--accent-color-1);
     border: none;
     border-radius: 999px;
-    color: var(--body-color);
+    color: var(--universal-dark-color);
+    font-weight: bold;
     cursor: pointer;
 }
 

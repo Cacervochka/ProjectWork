@@ -56,7 +56,8 @@
 .noUserContent div button a, .noUserContent div button a:visited {
     display: block;
     text-decoration: none;
-    color: var(--body-color);
+    color: var(--universal-dark-color);
+    font-weight: bold;
     width: 150px;
     height: 30px;
     line-height: 0;
@@ -280,9 +281,13 @@
 
 .stars span {
     font-size: 22px;
-    color: var(--accent-color-1);
+    color: var(--body-color-darker);
     cursor: pointer;
     transition: 0.2s;
+}
+
+.stars .active {
+    color: var(--accent-color-1);
 }
 
 textarea {

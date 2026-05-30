@@ -191,7 +191,7 @@
     display: none;
     background: transparent;
     border: none;
-    color: var(--body-color);
+    color: var(--header-text-color);
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -223,7 +223,42 @@
 .story-script-regular {
   font-family: inherit;
   font-weight: 400;
-  font-style: normal;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    .header-inner {
+        height: auto;
+        min-height: 78px;
+    }
+
+    .nav-toggle {
+        width: 48px;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        padding: 0;
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    .header-actions {
+        padding-bottom: 14px;
+    }
+
+    .site-nav a {
+        width: 100%;
+        margin-right: 0;
+        justify-content: flex-start;
+    }
+
+    .toggle-button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+    }
 }
 
 .bebas-neue-regular {

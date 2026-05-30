@@ -59,3 +59,30 @@
 .infoText {
     padding-left: 50px;
 }
+
+@media (max-width: 768px) {
+    .sectionContent {
+        width: calc(100% - 28px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .infoCardContainer {
+        flex-direction: column;
+        gap: 16px;
+        padding-bottom: 28px;
+    }
+
+    .infoCard {
+        width: 100%;
+    }
+
+    .infoCard p,
+    .infoCard p:nth-child(even) {
+        line-height: 1.25;
+    }
+
+    .infoText {
+        padding-left: 0;
+    }
+}

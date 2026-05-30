@@ -24,3 +24,14 @@ textarea {
     margin: 0 auto;
     padding: 20px 0;
 }
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: min(100%, calc(100% - 28px));
+        padding: 16px 0;
+    }
+}

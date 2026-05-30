@@ -14,8 +14,10 @@ $where = ['s.show_time >= NOW()'];
 $params = [];
 
 if ($search !== '') {
-    $where[] = '(m.title LIKE :search OR m.genre LIKE :search OR m.description LIKE :search)';
-    $params['search'] = '%' . $search . '%';
+    $where[] = '(m.title LIKE :search_title OR m.genre LIKE :search_genre OR m.description LIKE :search_description)';
+    $params['search_title'] = '%' . $search . '%';
+    $params['search_genre'] = '%' . $search . '%';
+    $params['search_description'] = '%' . $search . '%';
 }
 
 if ($dateFilter !== '') {

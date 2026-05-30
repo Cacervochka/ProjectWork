@@ -347,3 +347,57 @@ form {
     font-weight: bold;
     color: var(--container-background-1)
 }
+
+@media (max-width: 768px) {
+    .profileContent {
+        width: calc(100% - 28px);
+    }
+
+    .noUserContent div,
+    .profile-nav,
+    .eventElement div {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .noUserContent div button,
+    .profile-nav button,
+    .profile-nav button a,
+    .eventElement button,
+    .eventElement div div button {
+        width: 100%;
+    }
+
+    .eventElement div div {
+        width: 100%;
+        margin: 14px;
+    }
+
+    .eventElement div div h3,
+    .eventElement div div p,
+    .profileSubSection div p {
+        line-height: 1.25;
+    }
+
+    .reviewHeader,
+    .reviewElement div {
+        flex-direction: column !important;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    textarea,
+    .reviewElement p {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .settingsSection p,
+    .settingsSection span {
+        margin-left: 0;
+    }
+
+    .settingsSection span {
+        margin-top: 0;
+    }
+}

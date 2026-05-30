@@ -79,3 +79,36 @@
     padding-top: 10px;
     color: var(--body-color-dark);
 }
+
+@media (max-width: 768px) {
+    .menuSectionContent {
+        width: calc(100% - 28px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .menuOffers {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .menuColumn p {
+        width: 100%;
+        gap: 16px;
+        line-height: 1.25;
+    }
+
+    .popularDeals {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .popularDeals div {
+        max-width: none;
+    }
+
+    .popularDeals div p {
+        line-height: 1.25;
+    }
+}
